@@ -8,9 +8,27 @@ import {
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
 const ROLES = [
-  { value: "parent", label: "Padre de familia" },
-  { value: "teacher", label: "Profesor" },
-  { value: "student", label: "Estudiante" },
+  { value: "student", label: "🎓 Estudiante" },
+  { value: "teacher", label: "👨‍🏫 Profesor" },
+  { value: "parent", label: "👨‍👩‍👧‍👦 Padre de familia" },
+  { value: "admin", label: "👔 Administrativo" },
+];
+
+const SUBJECTS = [
+  "Matemáticas",
+  "Español", 
+  "Ciencias Naturales",
+  "Ciencias Sociales",
+  "Inglés",
+  "Educación Física",
+  "Tecnología",
+  "Artes",
+  "Ética y Valores",
+  "Religión",
+  "Filosofía",
+  "Química",
+  "Física",
+  "Biología"
 ];
 
 export default function AuthForm({ mode }) {
@@ -18,7 +36,11 @@ export default function AuthForm({ mode }) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
-  const [role, setRole] = useState("parent");
+  const [phone, setPhone] = useState("");
+  const [role, setRole] = useState("");
+  const [employeeCode, setEmployeeCode] = useState("");
+  const [mainSubject, setMainSubject] = useState("");
+  const [institutionalEmail, setInstitutionalEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState(null);
   const [show, setShow] = useState(false);
@@ -27,38 +49,45 @@ export default function AuthForm({ mode }) {
     e.preventDefault();
     setMsg(null);
     setLoading(true);
+    
     try {
       if (isRegister) {
         const cred = await createUserWithEmailAndPassword(auth, email, pass);
         await updateProfile(cred.user, { displayName: name });
-        await setDoc(doc(db, "users", cred.user.uid), {
+        
+        const userData = {
           uid: cred.user.uid,
           email,
           name,
           role,
           createdAt: new Date().toISOString(),
-        });
+        };
+
+        if (phone) userData.phone = phone;
+        if (role === "teacher" && employeeCode) userData.employeeCode = employeeCode;
+        if (role === "teacher" && mainSubject) userData.mainSubject = mainSubject;
+        if (institutionalEmail) userData.institutionalEmail = institutionalEmail;
+
+        await setDoc(doc(db, "users", cred.user.uid), userData);
         setMsg({ type: "success", text: "Registro exitoso. Ahora inicia sesión." });
       } else {
- 
-  const { user } = await signInWithEmailAndPassword(auth, email, pass);
-  const snap = await getDoc(doc(db, "users", user.uid));
-  const data = snap.exists() ? snap.data() : { role: "desconocido" };
+        const { user } = await signInWithEmailAndPassword(auth, email, pass);
+        const snap = await getDoc(doc(db, "users", user.uid));
+        const data = snap.exists() ? snap.data() : { role: "desconocido" };
 
-  // Guarda rol en localStorage para ProtectedRoute
-  localStorage.setItem("role", data.role);
+        localStorage.setItem("role", data.role);
 
-  // Redirige según rol
-  const path =
-    data.role === "parent"
-      ? "/parent"
-      : data.role === "teacher"
-      ? "/teacher"
-      : "/student";
+        const path =
+          data.role === "parent"
+            ? "/parent"
+            : data.role === "teacher"
+            ? "/teacher"
+            : data.role === "student"
+            ? "/student"
+            : "/dashboard";
 
-  window.location.href = path;
-}
-
+        window.location.href = path;
+      }
     } catch (err) {
       setMsg({ type: "error", text: traducirError(err) });
     } finally {
@@ -68,24 +97,14 @@ export default function AuthForm({ mode }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {isRegister && (
-        <div>
-          <label className="block mb-1 text-sm text-[#374151]">Nombre</label>
-          <input
-            className="w-full rounded-xl border border-[#E5E7EB] px-4 py-3 outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#93C5FD]"
-            placeholder="Tu nombre"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-      )}
-
+      {/* Correo Electrónico */}
       <div>
-        <label className="block mb-1 text-sm text-[#374151]">Correo electrónico</label>
+        <label className="flex items-center mb-2 text-sm font-medium text-gray-600">
+          📧 Correo Electrónico
+        </label>
         <input
           type="email"
-          className="w-full rounded-xl border border-[#E5E7EB] px-4 py-3 outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#93C5FD]"
+          className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
           placeholder="ejemplo@gmail.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -93,12 +112,33 @@ export default function AuthForm({ mode }) {
         />
       </div>
 
+      {isRegister && (
+        <>
+          {/* Teléfono/WhatsApp */}
+          <div>
+            <label className="flex items-center mb-2 text-sm font-medium text-gray-600">
+              📱 Teléfono/WhatsApp
+            </label>
+            <input
+              type="tel"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+              placeholder="+57 300 123 4567"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+        </>
+      )}
+
+      {/* Contraseña */}
       <div>
-        <label className="block mb-1 text-sm text-[#374151]">Contraseña</label>
+        <label className="flex items-center mb-2 text-sm font-medium text-gray-600">
+          🔐 Contraseña
+        </label>
         <div className="relative">
           <input
             type={show ? "text" : "password"}
-            className="w-full rounded-xl border border-[#E5E7EB] px-4 py-3 pr-12 outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#93C5FD]"
+            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all pr-12"
             placeholder="Tu contraseña"
             value={pass}
             onChange={(e) => setPass(e.target.value)}
@@ -108,46 +148,132 @@ export default function AuthForm({ mode }) {
           <button
             type="button"
             onClick={() => setShow((s) => !s)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-[#2563EB] hover:underline"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-blue-600"
           >
-            {show ? "Ocultar" : "Mostrar"}
+            {show ? "👁️" : "👁️‍🗨️"}
           </button>
         </div>
       </div>
 
       {isRegister && (
-        <div>
-          <label className="block mb-1 text-sm text-[#374151]">Tipo de usuario</label>
-          <select
-            className="w-full rounded-xl border border-[#E5E7EB] px-4 py-3 outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#93C5FD]"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-          >
-            {ROLES.map((r) => (
-              <option key={r.value} value={r.value}>
-                {r.label}
-              </option>
-            ))}
-          </select>
-        </div>
+        <>
+          {/* Tipo de Usuario */}
+          <div>
+            <label className="flex items-center mb-2 text-sm font-medium text-gray-600">
+              👥 Tipo de Usuario
+            </label>
+            <select
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              required
+            >
+              <option value="">Selecciona tu rol</option>
+              {ROLES.map((r) => (
+                <option key={r.value} value={r.value}>
+                  {r.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Código de Empleado - Solo para profesores */}
+          {role === "teacher" && (
+            <div>
+              <label className="flex items-center mb-2 text-sm font-medium text-gray-600">
+                🆔 Código de Empleado
+              </label>
+              <input
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                placeholder="EMP-2024-001"
+                value={employeeCode}
+                onChange={(e) => setEmployeeCode(e.target.value)}
+              />
+              <p className="mt-1 text-xs text-orange-600">
+                ⚠️ Solo personal autorizado puede registrarse como profesor
+              </p>
+            </div>
+          )}
+
+          {/* Materia Principal - Solo para profesores */}
+          {role === "teacher" && (
+            <div>
+              <label className="flex items-center mb-2 text-sm font-medium text-gray-600">
+                📚 Materia Principal
+              </label>
+              <select
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                value={mainSubject}
+                onChange={(e) => setMainSubject(e.target.value)}
+              >
+                <option value="">Selecciona</option>
+                {SUBJECTS.map((subject) => (
+                  <option key={subject} value={subject}>
+                    {subject}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* Email Institucional */}
+          <div>
+            <label className="flex items-center mb-2 text-sm font-medium text-gray-600">
+              📧 Email Institucional
+            </label>
+            <input
+              type="email"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+              placeholder="nombre@colegio.edu.co"
+              value={institutionalEmail}
+              onChange={(e) => setInstitutionalEmail(e.target.value)}
+            />
+            <p className="mt-1 text-xs text-gray-500">
+              Debe usar el email institucional del colegio
+            </p>
+          </div>
+
+          {/* Nombre - Lo pongo al final para el registro */}
+          <div>
+            <label className="flex items-center mb-2 text-sm font-medium text-gray-600">
+              👤 Nombre Completo
+            </label>
+            <input
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+              placeholder="Tu nombre completo"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+        </>
       )}
 
+      {/* Botón de envío */}
       <button
+        type="submit"
         disabled={loading}
-        className="w-full rounded-xl py-3 font-semibold text-white bg-[#1E40AF] hover:bg-[#1E3A8A] active:bg-[#0B3B91] transition disabled:opacity-60 disabled:cursor-not-allowed"
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
       >
-        {loading ? "Procesando..." : isRegister ? "Crear cuenta" : "Entrar"}
+        <span>📝</span>
+        <span>{loading ? "Procesando..." : "Iniciar Sesión"}</span>
       </button>
 
+      {/* Mensaje de estado */}
       {msg && (
         <div
-          className={`rounded-xl px-4 py-3 text-sm border ${
+          className={`rounded-xl px-4 py-3 text-sm ${
             msg.type === "success"
-              ? "bg-[#ECFDF5] text-[#065F46] border-[#A7F3D0]"
-              : "bg-[#FEF2F2] text-[#991B1B] border-[#FECACA]"
+              ? "bg-green-50 text-green-800 border border-green-200"
+              : "bg-red-50 text-red-800 border border-red-200"
           }`}
         >
-          {msg.text}
+          <div className="flex items-center">
+            <span className="mr-2">
+              {msg.type === "success" ? "✅" : "❌"}
+            </span>
+            {msg.text}
+          </div>
         </div>
       )}
     </form>

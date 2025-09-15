@@ -2,52 +2,68 @@ import { useState } from "react";
 import AuthForm from "./components/AuthForm";
 
 export default function App() {
-  const [mode, setMode] = useState("login"); // "login" | "register"
+  const [mode, setMode] = useState("login");
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0A2E6D] via-[#1E3A8A] to-[#2563EB] flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-8 border border-[#F3F4F6]">
-        <div className="text-center mb-6">
-          <div className="w-16 h-16 mx-auto rounded-full bg-[#E8F0FF] flex items-center justify-center text-[#1E3A8A] font-bold">
-            CC
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 relative overflow-hidden flex items-center justify-center p-4">
+      
+      {/* Círculos decorativos de fondo */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-20 -left-20 w-80 h-80 bg-white opacity-5 rounded-full"></div>
+        <div className="absolute top-1/4 -right-32 w-96 h-96 bg-white opacity-5 rounded-full"></div>
+        <div className="absolute -bottom-20 left-1/3 w-64 h-64 bg-white opacity-5 rounded-full"></div>
+        <div className="absolute top-3/4 right-1/4 w-48 h-48 bg-white opacity-5 rounded-full"></div>
+      </div>
+
+      {/* Contenedor principal */}
+      <div className="relative z-10 w-full max-w-md">
+        
+        {/* Logo y título */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-600 rounded-full mb-4 shadow-lg">
+            <span className="text-white text-2xl font-bold">CC</span>
           </div>
-          <h1 className="mt-4 text-2xl font-extrabold text-[#1F2937]">Colegio Cooperativo</h1>
-          <p className="text-[#6B7280]">Sistema de Gestión Estudiantil</p>
+          <h1 className="text-3xl font-bold text-white mb-2">Colegio Cooperativo</h1>
+          <p className="text-blue-200 text-lg">Sistema de Gestión Estudiantil</p>
         </div>
 
-        <div className="grid grid-cols-2 gap-2 bg-[#F3F4F6] rounded-xl p-1 mb-6">
-          <button
-            onClick={() => setMode("login")}
-            className={`py-2 rounded-lg transition ${
-              mode === "login"
-                ? "bg-white shadow font-semibold text-[#0B3B91]"
-                : "text-[#6B7280] hover:text-[#0B3B91]"
-            }`}
-          >
-            Iniciar sesión
-          </button>
-          <button
-            onClick={() => setMode("register")}
-            className={`py-2 rounded-lg transition ${
-              mode === "register"
-                ? "bg-white shadow font-semibold text-[#0B3B91]"
-                : "text-[#6B7280] hover:text-[#0B3B91]"
-            }`}
-          >
-            Registrarse
-          </button>
+        {/* Contenedor del formulario */}
+        <div className="bg-white rounded-3xl shadow-2xl p-8">
+          
+          {/* Pestañas de navegación */}
+          <div className="grid grid-cols-2 gap-2 bg-gray-100 rounded-xl p-1 mb-6">
+            <button
+              onClick={() => setMode("login")}
+              className={`py-2 rounded-lg transition ${
+                mode === "login"
+                  ? "bg-white shadow font-semibold text-blue-700"
+                  : "text-gray-600 hover:text-blue-700"
+              }`}
+            >
+              Iniciar sesión
+            </button>
+            <button
+              onClick={() => setMode("register")}
+              className={`py-2 rounded-lg transition ${
+                mode === "register"
+                  ? "bg-white shadow font-semibold text-blue-700"
+                  : "text-gray-600 hover:text-blue-700"
+              }`}
+            >
+              Registrarse
+            </button>
+          </div>
+
+          {/* Formulario */}
+          <AuthForm mode={mode} />
+
+          {/* Footer */}
+          <p className="mt-6 text-center text-xs text-gray-500">
+            © {new Date().getFullYear()} Colegio Cooperativo - Todos los derechos reservados
+          </p>
         </div>
-
-        <AuthForm mode={mode} />
-
-        <p className="mt-6 text-center text-xs text-[#9CA3AF]">
-          © {new Date().getFullYear()} Colegio Cooperativo — Todos los derechos reservados
-        </p>
       </div>
     </div>
   );
 }
-
-
-
 

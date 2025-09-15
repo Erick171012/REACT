@@ -1,16 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-
-/** Barra superior y sidebar (los que ya tienes) */
 import TopBar from "./TopBar.jsx";
 import Sidebar from "./Sidebar.jsx";
 
-/**
- * Layout base para el dashboard:
- * - TopBar fija arriba
- * - Sidebar a la izquierda (en md+)
- * - Contenido a la derecha con <Outlet />
- */
 export default function Layout() {
   const handleLogout = () => {
     try {
@@ -20,22 +12,24 @@ export default function Layout() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-blue-800 to-blue-600">
-      {/* Topbar */}
+    <div className="min-h-screen bg-gray-50">
+      {/* TopBar */}
       <TopBar onLogout={handleLogout} />
 
-      {/* Contenido con sidebar */}
-      <div className="mx-auto max-w-7xl px-4 md:px-6 py-6">
-        <div className="flex gap-6">
-          {/* Sidebar */}
+      {/* Contenido principal */}
+      <div className="flex">
+        {/* Sidebar */}
+        <div className="w-80 p-6">
           <Sidebar />
+        </div>
 
-          {/* Contenedor principal */}
-          <main className="flex-1">
-            <div className="bg-white/90 backdrop-blur rounded-2xl shadow-xl p-4 md:p-6">
+        {/* Área de contenido */}
+        <div className="flex-1 p-6 pr-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 min-h-[calc(100vh-120px)]">
+            <div className="p-8">
               <Outlet />
             </div>
-          </main>
+          </div>
         </div>
       </div>
     </div>

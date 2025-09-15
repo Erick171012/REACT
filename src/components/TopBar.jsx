@@ -19,50 +19,154 @@ export default function TopBar({
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-gray-200">
-      <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-        {/* Marca / Logo + subtítulo */}
-        <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-semibold">
-            CC
+    <header style={{
+      backgroundColor: 'white',
+      borderBottom: '1px solid #e5e7eb',
+      boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1)'
+    }}>
+      <div style={{
+        maxWidth: '1280px',
+        margin: '0 auto',
+        padding: '20px 32px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}>
+        {/* Logo + Título */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div style={{
+            width: '56px',
+            height: '56px',
+            backgroundColor: '#2563eb',
+            borderRadius: '12px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
+          }}>
+            <span style={{
+              color: 'white',
+              fontSize: '20px',
+              fontWeight: 'bold'
+            }}>CC</span>
           </div>
           <div>
-            <div className="text-lg font-semibold text-slate-800">Colegio Cooperativo</div>
-            <div className="text-xs text-slate-500 -mt-0.5">Agenda Estudiantil Digital</div>
+            <h1 style={{
+              fontSize: '20px',
+              fontWeight: 'bold',
+              color: '#111827',
+              margin: 0
+            }}>Colegio Cooperativo</h1>
+            <p style={{
+              fontSize: '14px',
+              color: '#6b7280',
+              margin: 0
+            }}>Agenda Estudiantil Digital</p>
           </div>
-          {title ? (
-            <span className="ml-4 pl-4 text-sm text-slate-500 border-l hidden sm:inline">
-              {title}
-            </span>
-          ) : null}
         </div>
 
-        {/* Estado de sesión + usuario + botón */}
-        <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-emerald-700 text-sm">
-            <span className="text-base">●</span> Sesión activa
+        {/* Panel derecho */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+          {/* Notificaciones */}
+          <div style={{ position: 'relative' }}>
+            <button style={{
+              position: 'relative',
+              padding: '8px',
+              color: '#6b7280',
+              backgroundColor: 'transparent',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer'
+            }}>
+              <svg style={{ width: '24px', height: '24px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div style={{
+                position: 'absolute',
+                top: '-4px',
+                right: '-4px',
+                width: '20px',
+                height: '20px',
+                backgroundColor: '#ef4444',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <span style={{
+                  color: 'white',
+                  fontSize: '12px',
+                  fontWeight: '600'
+                }}>3</span>
+              </div>
+            </button>
           </div>
 
-          <div className="flex items-center gap-2">
-            <div className="h-10 w-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center">
-              👤
+          {/* Separador */}
+          <div style={{
+            width: '1px',
+            height: '32px',
+            backgroundColor: '#d1d5db'
+          }}></div>
+
+          {/* Usuario */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{
+              width: '40px',
+              height: '40px',
+              backgroundColor: '#10b981',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <span style={{
+                color: 'white',
+                fontWeight: '600',
+                fontSize: '14px'
+              }}>
+                {user.name.split(' ').map(n => n[0]).join('')}
+              </span>
             </div>
-            <div className="text-right">
-              <div className="text-sm font-medium text-slate-800">{user.name}</div>
-              <div className="text-xs text-slate-500">{user.role}</div>
+            <div>
+              <div style={{
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#111827'
+              }}>{user.name}</div>
+              <div style={{
+                fontSize: '12px',
+                color: '#6b7280'
+              }}>{user.role}</div>
             </div>
           </div>
 
+          {/* Separador */}
+          <div style={{
+            width: '1px',
+            height: '32px',
+            backgroundColor: '#d1d5db'
+          }}></div>
+
+          {/* Botón Cerrar Sesión */}
           <button
             onClick={handleLogout}
-            className="ml-2 rounded-md bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 text-sm font-medium shadow-sm"
+            style={{
+              backgroundColor: '#ef4444',
+              color: 'white',
+              padding: '8px 16px',
+              borderRadius: '8px',
+              fontWeight: '500',
+              fontSize: '14px',
+              border: 'none',
+              cursor: 'pointer',
+              boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)'
+            }}
           >
-            Cerrar sesión
+            Cerrar Sesión
           </button>
         </div>
       </div>
     </header>
   );
 }
-
-

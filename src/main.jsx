@@ -15,8 +15,8 @@ import ParentAppointments from "./pages/ParentAppointments";
 import ParentEvents from "./pages/ParentEvents";
 import ParentComms from "./pages/ParentComms";
 
-// Tu formulario de auth (el que ya tienes)
-import AuthForm from "./components/AuthForm";
+// Tu componente App con el diseño bonito
+import App from "./App";
 
 // --------- Helpers de ruta ----------
 function Guard({ children }) {
@@ -31,7 +31,7 @@ function HomeGate() {
   return role === "parent" ? (
     <Navigate to="/parent" replace />
   ) : (
-    <AuthForm mode="login" />
+    <App />
   );
 }
 
@@ -42,7 +42,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         {/* Pública: landing/login */}
         <Route path="/" element={<HomeGate />} />
-        <Route path="/login" element={<AuthForm mode="login" />} />
+        <Route path="/login" element={<App />} />
 
         {/* Bloque del Padre (protegido + layout compartido) */}
         <Route
