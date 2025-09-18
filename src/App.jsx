@@ -1,8 +1,11 @@
 import { useState } from "react";
 import AuthForm from "./components/AuthForm";
+import { useNavigate } from "react-router-dom";
+
 
 export default function App() {
   const [mode, setMode] = useState("login");
+   const navigate = useNavigate(); 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 relative overflow-hidden flex items-center justify-center p-4">
@@ -55,7 +58,16 @@ export default function App() {
           </div>
 
           {/* Formulario */}
-          <AuthForm mode={mode} />
+          <AuthForm
+  mode={mode}
+  onSuccess={(role = "parent") => {
+    localStorage.setItem("role", role);
+    navigate("/parent", { replace: true });
+    
+
+  }}
+/>
+
 
           {/* Footer */}
           <p className="mt-6 text-center text-xs text-gray-500">

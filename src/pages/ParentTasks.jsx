@@ -1,4 +1,3 @@
-import Layout from "../components/Layout";
 import { Tag } from "../components/Cards";
 
 const items = [
@@ -9,32 +8,32 @@ const items = [
 
 export default function ParentTasks() {
   return (
-    <Layout onLogout={() => (window.location.href = "/")}>
-      <div className="space-y-6">
-        <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Tareas de mi Hijo</h1>
+    <div className="space-y-6">
+      <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Tareas de mi Hijo</h1>
 
-        <div className="space-y-3">
-          {items.map((t, i) => (
-            <div key={i} className="bg-white rounded-2xl ring-1 ring-slate-100 p-5 shadow-sm">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-semibold text-slate-800">{t.title}</h3>
-                    <Tag>{t.subject}</Tag>
-                  </div>
-                  <p className="text-sm text-slate-500 mt-1">{t.due}</p>
-                </div>
+      <div className="space-y-3">
+        {items.map((t, i) => (
+          <div key={i} className="bg-white rounded-2xl ring-1 ring-slate-100 p-5 shadow-sm">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+              <div>
                 <div className="flex items-center gap-2">
-                  {t.status === "Pendiente" && <Tag color="yellow">Pendiente</Tag>}
-                  {t.status === "En revisión" && <Tag color="gray">En revisión</Tag>}
-                  {t.status === "Completada" && <Tag color="green">Completada</Tag>}
-                  <button className="rounded-md bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 text-sm">Ver</button>
+                  <h3 className="font-semibold text-slate-800">{t.title}</h3>
+                  <Tag>{t.subject}</Tag>
                 </div>
+                <p className="text-sm text-slate-500 mt-1">{t.due}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                {t.status === "Pendiente" && <Tag color="yellow">Pendiente</Tag>}
+                {t.status === "En revisión" && <Tag color="gray">En revisión</Tag>}
+                {t.status === "Completada" && <Tag color="green">Completada</Tag>}
+                <button className="rounded-md bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 text-sm">Ver</button>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </Layout>
+    </div>
   );
 }
+
+
