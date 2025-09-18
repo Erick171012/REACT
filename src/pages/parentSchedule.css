@@ -1,0 +1,95 @@
+/* ====== ParentSchedule (Horario) ====== */
+:root{
+  --p1:#1e3c72; --p2:#2a5298;
+  --ok:#28a745; --warn:#ffc107; --danger:#dc3545; --info:#17a2b8;
+  --bg:#f6f7fb; --card:#fff; --text:#1f2937; --muted:#6b7280; --line:#e5e7eb;
+  --r-lg:16px; --r-md:12px; --r-sm:8px; --shadow:0 6px 20px rgba(0,0,0,.06);
+}
+
+/* envoltorio */
+.ps-wrap{max-width:1100px;margin:0 auto;padding:16px}
+.ps-header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:4px 0 16px}
+.ps-title{font-size:28px;font-weight:800;color:var(--text);margin:0}
+.ps-sub{color:var(--muted)}
+.ps-legend{display:flex;gap:8px;flex-wrap:wrap}
+.ps-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#fff}
+.ps-dot{width:10px;height:10px;border-radius:50%}
+
+/* tarjeta contenedora */
+.ps-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden}
+
+/* ====== MODO GRID (recomendado) ====== */
+.ps-week{
+  display:grid;
+  /* 1 columna de horas + 5 días (ajusta si tienes sábados) */
+  grid-template-columns: 110px repeat(5, 1fr);
+  /* 1 fila de cabecera + 10 franjas (ajusta según tus horas) */
+  grid-auto-rows: 64px;
+}
+
+.ps-head,
+.ps-hour,
+.ps-cell{
+  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line);
+  padding:12px;
+  background:#fff;
+}
+.ps-head:first-child{border-top-left-radius:var(--r-lg)}
+.ps-head{background:linear-gradient(135deg,#f8fafc,#eef2ff);font-weight:800;color:#334155}
+.ps-hour{background:#f8fafc;font-weight:700;color:#334155}
+
+/* bloque clase */
+.ps-class{
+  height:100%;
+  background:#f9fafb;
+  border-left:4px solid var(--p2);
+  border-radius:10px;
+  padding:10px 12px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+  transition:.2s;
+}
+.ps-class:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.08)}
+.ps-subject{font-weight:800;color:var(--text)}
+.ps-room{font-size:.85rem;color:var(--muted)}
+.ps-teacher{font-size:.85rem;color:#475569;margin-top:4px}
+.ps-badges{display:flex;gap:6px;margin-top:8px}
+.ps-badge{font-size:.7rem;font-weight:800;padding:3px 8px;border-radius:999px;background:#eef2ff;color:#1f2a6b}
+.ps-badge.ok{background:#d1fae5;color:#065f46}
+.ps-badge.warn{background:#fff3cd;color:#856404}
+
+/* Colores por materia (opcional via data-attribute) */
+.ps-class[data-subject="Matemáticas"]{border-left-color:#3b82f6}
+.ps-class[data-subject="Español"]{border-left-color:#22c55e}
+.ps-class[data-subject="Ciencias"]{border-left-color:#14b8a6}
+.ps-class[data-subject="Inglés"]{border-left-color:#a855f7}
+.ps-class[data-subject="Sociales"]{border-left-color:#f59e0b}
+.ps-class[data-subject="Ed. Física"]{border-left-color:#ef4444}
+.ps-class[data-subject="Artes"]{border-left-color:#e11d48}
+.ps-class[data-subject="Tecnología"]{border-left-color:#0ea5e9}
+
+/* ====== FALLBACK: si usas tabla ====== */
+.schedule-container{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow)}
+.schedule-container .data-table{width:100%;border-collapse:collapse}
+.schedule-container .data-table th,
+.schedule-container .data-table td{padding:12px;border-bottom:1px solid var(--line)}
+.schedule-container .data-table th{background:#f8fafc;text-align:left;color:#334155;font-weight:800}
+.schedule-container .data-table tr:hover{background:#f9fafb}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 960px){
+  .ps-week{grid-template-columns: 90px repeat(5, 1fr)}
+  .ps-header{flex-direction:column;align-items:flex-start}
+}
+@media (max-width: 680px){
+  /* En móviles mostramos un día a la vez */
+  .ps-week{grid-template-columns: 90px 1fr}
+  .ps-hide-mobile{display:none} /* utilízala en los días que no quieras mostrar */
+}
+
+/* ====== BOTONERA ====== */
+.ps-actions{display:flex;gap:8px}
+.ps-btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font-weight:700;cursor:pointer}
+.ps-btn.primary{background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;border:0}
+.ps-btn:hover{filter:brightness(.98)}

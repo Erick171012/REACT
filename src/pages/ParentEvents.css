@@ -1,0 +1,84 @@
+.events-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.events-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.event-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: #fff;
+  border: 1px solid #f1f5f9;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.event-date {
+  width: 80px;
+  height: 80px;
+  background: #e0e7ff;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-day {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4338ca;
+}
+
+.event-month {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #4338ca;
+}
+
+.event-info {
+  flex: 1;
+}
+
+.event-title {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.event-time {
+  font-size: 0.875rem;
+  color: #475569;
+}
+
+.event-place {
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+.event-btn {
+  background: #4338ca;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: background 0.2s;
+}
+
+.event-btn:hover {
+  background: #3730a3;
+}

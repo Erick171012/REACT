@@ -1,0 +1,175 @@
+/* ===== Citaciones (ParentAppointments) ===== */
+
+.appt-container {
+  display: grid;
+  gap: 24px;
+}
+
+.appt-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.appt-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a; /* slate-900 */
+}
+
+.appt-subtitle {
+  margin: 6px 0 0;
+  color: #475569; /* slate-600 */
+}
+
+/* Lista */
+.appt-list {
+  display: grid;
+  gap: 18px;
+}
+
+/* Card base */
+.appt-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #eef2f7;
+  border-radius: 18px;
+  padding: 18px 20px;
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+}
+
+/* Borde sutil por prioridad */
+.appt-card.is-urgent {
+  background: linear-gradient(#fff, #fff) padding-box,
+              radial-gradient(120% 120% at 0% 0%, #ffe4e6, transparent) border-box;
+  border: 1px solid #fecaca; /* rose-200 */
+}
+.appt-card.is-normal {
+  background: linear-gradient(#fff, #fff) padding-box,
+              radial-gradient(120% 120% at 0% 0%, #eef2ff, transparent) border-box;
+  border: 1px solid #e0e7ff; /* indigo-100 */
+}
+
+/* Chip de prioridad */
+.appt-chip {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+.chip-danger {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.chip-info {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+/* Header */
+.appt-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.appt-type {
+  font-weight: 700;
+  color: #1f2937; /* gray-800 */
+}
+.appt-confirmed {
+  font-size: 13px;
+  color: #16a34a; /* green-600 */
+  font-weight: 700;
+}
+
+/* Título */
+.appt-title {
+  margin: 6px 0 8px 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* Detalles */
+.appt-details {
+  margin: 0;
+  padding-left: 18px;
+  color: #475569;
+}
+.appt-details li {
+  margin: 2px 0;
+}
+
+/* Acciones */
+.appt-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .12s ease, opacity .12s ease;
+}
+.btn:hover { transform: translateY(-1px); opacity: .95; }
+
+.btn-success { background: #059669; color: #fff; }  /* emerald-600 */
+.btn-warn    { background: #f59e0b; color: #fff; }  /* amber-500 */
+
+/* Reminders box */
+.appt-reminders {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #f8fafc; /* slate-50 */
+  border-left: 4px solid #2563eb; /* blue-600 */
+  color: #475569;
+}
+.reminder-item + .reminder-item { margin-top: 6px; }
+
+/* Config */
+.appt-config {
+  margin-top: 6px;
+  background: #fff;
+  border: 1px solid #eef2f7;
+  border-radius: 18px;
+  padding: 18px 20px;
+}
+.appt-config h2 {
+  margin: 0 0 14px 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+}
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.config-item {
+  font-size: 14px;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.config-select {
+  margin-left: 8px;
+  padding: 8px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #334155;
+  background: #fff;
+}
