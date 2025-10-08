@@ -1,0 +1,105 @@
+.teacher-attendance {
+  padding: 2rem;
+  color: #1f2937;
+}
+
+.teacher-attendance .title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.teacher-attendance .subtitle {
+  color: #6b7280;
+  margin-top: 4px;
+  margin-bottom: 1.5rem;
+}
+
+/* Tabla */
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.attendance-table th,
+.attendance-table td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+}
+
+.attendance-table th {
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.attendance-table td {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.status {
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.present {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.absent {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Botones */
+.btn-toggle {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.btn-green {
+  background-color: #15803d;
+}
+
+.btn-red {
+  background-color: #b91c1c;
+}
+
+.btn-green:hover {
+  background-color: #166534;
+}
+
+.btn-red:hover {
+  background-color: #991b1b;
+}
+
+.save-btn {
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.save-btn:hover {
+  background-color: #1e40af;
+}
+

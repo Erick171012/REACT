@@ -1,219 +1,103 @@
-/* Contenedor general */
-.comms {
+.parent-comms {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 2rem;
 }
 
-/* Header */
-.comms-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.comms-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.comms-title h1 {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 800;
-  color: #1e293b;
-}
-.emoji {
-  font-size: 24px;
-}
-
-.comms-right .chip {
-  background: #eef2ff;
-  color: #3730a3;
-  border: 1px solid #e0e7ff;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.chip .dot {
-  background: #ef4444;
-  color: #fff;
-  border-radius: 6px;
-  padding: 0 6px;
-  font-size: 12px;
-}
-
-/* Toolbar */
-.comms-toolbar {
-  display: flex;
-  gap: 12px;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.tabs {
-  display: flex;
-  gap: 8px;
-}
-
-.tab {
-  background: #f1f5f9;
-  color: #334155;
-  border: 1px solid #e2e8f0;
-  padding: 8px 12px;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: all .15s ease;
-}
-.tab:hover {
-  background: #e2e8f0;
-}
-.tab.active {
-  background: #4338ca;
-  color: #fff;
-  border-color: #4338ca;
-}
-
-.search input {
-  width: 260px;
-  max-width: 100%;
-  border: 1px solid #e2e8f0;
-  padding: 10px 12px;
-  border-radius: 12px;
-  outline: none;
-}
-.search input:focus {
-  border-color: #4338ca;
-  box-shadow: 0 0 0 3px rgba(67,56,202,.12);
-}
-
-/* Lista */
-.comms-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Tarjeta mensaje */
-.msg {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 12px;
-  background: #fff;
-  border: 1px solid #f1f5f9;
-  border-radius: 16px;
-  padding: 14px;
-  box-shadow: 0 2px 8px rgba(15,23,42,.04);
-}
-.msg.unread {
-  border-color: #c7d2fe;
-  box-shadow: 0 4px 14px rgba(67,56,202,.08);
-}
-.avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  background: #eef2ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-}
-
-.msg-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  gap: 8px;
-}
-.msg-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.msg-title h3 {
-  margin: 0;
-  font-size: 16px;
-  color: #0f172a;
+.page-title {
+  font-size: 1.8rem;
   font-weight: 700;
-}
-.msg-meta {
-  color: #64748b;
-  font-size: 13px;
-  white-space: nowrap;
+  color: #1e3a8a;
+  margin-bottom: 0.2rem;
 }
 
-.tag {
-  font-size: 11px;
-  font-weight: 800;
-  padding: 3px 8px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-}
-.tag-imp {
-  background: #fff1f2;
-  color: #b91c1c;
-  border-color: #ffe4e6;
-}
-.tag-new {
-  background: #ecfeff;
-  color: #0e7490;
-  border-color: #cffafe;
+.page-subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
 }
 
-.msg-from {
-  color: #334155;
-  font-size: 14px;
-  margin: 4px 0 2px;
-}
-
-.msg-text {
-  color: #475569;
-  margin: 8px 0 12px;
-  line-height: 1.5;
-}
-
-/* Acciones */
-.msg-actions {
+/* --- Tarjetas de mensajes --- */
+.messages-list {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.btn {
-  border-radius: 10px;
-  font-weight: 600;
-  padding: 8px 12px;
-  border: 1px solid transparent;
-  cursor: pointer;
-}
-.btn-flat {
-  background: #f8fafc;
-  color: #0f172a;
-  border-color: #e2e8f0;
-}
-.btn-flat:hover {
-  background: #eef2f7;
-}
-.btn-primary {
-  background: #4338ca;
-  color: #fff;
-}
-.btn-primary:hover {
-  background: #3730a3;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-/* Empty state */
-.empty {
-  text-align: center;
-  color: #64748b;
-  border: 2px dashed #e2e8f0;
-  border-radius: 16px;
-  padding: 28px;
+.message-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.06);
+  padding: 1.5rem 2rem;
+  transition: all 0.2s ease;
 }
-.empty .big {
-  font-size: 46px;
-  margin-bottom: 10px;
+
+.message-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
 }
+
+.message-card.read {
+  background: #f9fafb;
+  opacity: 0.85;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.message-header h3 {
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.sender {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.message-content {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+/* --- Botón de marcar como leído --- */
+.mark-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-unread {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-unread:hover {
+  background-color: #1e40af;
+}
+
+.btn-read {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.btn-read:hover {
+  background-color: #d1d5db;
+}
+

@@ -1,0 +1,111 @@
+.teacher-tasks {
+  padding: 2rem;
+  color: #1f2937;
+}
+
+.teacher-tasks .title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.teacher-tasks .subtitle {
+  color: #6b7280;
+  margin-top: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.add-btn {
+  background-color: #1e40af;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.add-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.tasks-table {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.tasks-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tasks-table th {
+  background: #f3f4f6;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+.tasks-table td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+}
+
+.status-green {
+  background-color: #16a34a;
+}
+
+.status-blue {
+  background-color: #2563eb;
+}
+
+.status-yellow {
+  background-color: #f59e0b;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: white;
+  margin-right: 0.4rem;
+  transition: opacity 0.2s ease;
+}
+
+.edit-btn {
+  background-color: #2563eb;
+}
+
+.edit-btn:hover {
+  opacity: 0.9;
+}
+
+.delete-btn {
+  background-color: #dc2626;
+}
+
+.delete-btn:hover {
+  opacity: 0.9;
+}
+

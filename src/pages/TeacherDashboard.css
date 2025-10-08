@@ -1,0 +1,71 @@
+/* ============================
+   PANEL DEL PROFESOR - ESTILO
+   ============================ */
+
+.teacher-dashboard {
+  padding: 2rem;
+  background: linear-gradient(to bottom, #ffffff, #eff6ff);
+  min-height: 100%;
+  font-family: "Inter", sans-serif;
+}
+
+.dashboard-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 0.25rem;
+}
+
+.dashboard-subtitle {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.cards-container {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.teacher-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.teacher-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.teacher-card h3 {
+  color: #1e3a8a;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.teacher-card p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.teacher-card button {
+  margin-top: 1rem;
+  background-color: #1e40af;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.teacher-card button:hover {
+  background-color: #1e3a8a;
+}

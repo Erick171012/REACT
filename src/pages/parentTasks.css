@@ -1,66 +1,87 @@
-/* ====== ParentTasks (estilos autocontenidos) ====== */
-:root{
-  --primary:#1e3c72; --primary-2:#2a5298;
-  --ok:#28a745; --warn:#ffc107; --danger:#dc3545;
-  --text:#2b2b2b; --muted:#6b7280; --border:#e5e7eb; --bg:#f6f7fb; --white:#fff;
-  --r-lg:16px; --r-md:12px; --r-sm:8px;
-  --shadow:0 6px 20px rgba(0,0,0,.06);
+/* --- Contenedor principal --- */
+.parent-tasks {
+  width: 100%;
+  margin: 0;
+  padding: 0 1.5rem; /* 🔹 Alinea con el dashboard */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-/* contenedor */
-.pt-container{max-width:1100px;margin:0 auto;padding:16px}
-.pt-title{font-size:28px;font-weight:800;color:var(--text);margin:0 0 6px}
-.pt-subtitle{color:var(--muted);margin-bottom:16px}
+/* --- Encabezado --- */
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 0.2rem;
+}
 
-/* tabs + buscador */
-.pt-controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 16px}
-.pt-tabs{display:flex;gap:8px;flex-wrap:wrap}
-.pt-tab{background:var(--white);border:1px solid var(--border);border-radius:12px;
-  padding:10px 14px;font-weight:700;color:var(--muted);cursor:pointer}
-.pt-tab.active{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border-color:transparent}
-.pt-search{flex:1;min-width:240px}
-.pt-input{width:100%;padding:11px 12px;border:1px solid var(--border);border-radius:12px;outline:none;background:#fff}
-.pt-input:focus{box-shadow:0 0 0 3px rgba(30,60,114,.12);border-color:var(--primary)}
+.page-subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
 
-/* card y lista */
-.pt-card{background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:16px}
-.pt-list{display:flex;flex-direction:column;gap:12px}
+/* --- Tabla de tareas --- */
+.tasks-table {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.06);
+  padding: 1.5rem;
+  overflow-x: auto;
+}
 
-/* item de tarea */
-.pt-item{border:1px solid var(--border);border-radius:12px;padding:14px;background:#fff}
-.pt-item:hover{box-shadow:0 8px 24px rgba(0,0,0,.08);transform:translateY(-1px);transition:.2s}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* 🔹 evita que se deforme en pantallas pequeñas */
+}
 
-.pt-row1{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.pt-title-sm{font-weight:800;color:var(--text)}
-.pt-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:var(--muted);font-size:.9rem}
+thead {
+  background-color: #f3f4f6;
+  border-radius: 0.5rem;
+}
 
-.pt-chip{background:#eef2ff;color:#1f2a6b;border-radius:999px;padding:3px 10px;font-weight:700;font-size:.75rem}
-.pt-chip.gray{background:#f0f0f0;color:#555}
-.pt-chip.ok{background:#d1fae5;color:#065f46}
-.pt-chip.warn{background:#fff3cd;color:#856404}
-.pt-chip.danger{background:#fde2e1;color:#991b1b}
+th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  color: #374151;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #e5e7eb;
+}
 
-.pt-status{border-radius:999px;padding:6px 10px;font-weight:800;font-size:.75rem;white-space:nowrap}
-.pt-status.pending{background:#fff3cd;color:#856404}
-.pt-status.completed{background:#d4edda;color:#155724}
-.pt-status.overdue{background:#f8d7da;color:#721c24}
+td {
+  padding: 0.85rem 1rem;
+  color: #111827;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #f3f4f6;
+}
 
-.pt-desc{color:#555;margin:8px 0 10px;line-height:1.5}
-.pt-row2{display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--muted);font-size:.95rem}
+/* --- Estados de tareas --- */
+.status-badge {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.3rem 0.75rem;
+  color: white;
+}
 
-/* botones */
-.pt-actions{display:flex;gap:8px;flex-wrap:wrap}
-.pt-btn{border:0;border-radius:10px;padding:9px 12px;font-weight:700;cursor:pointer}
-.pt-btn:hover{transform:translateY(-1px)}
-.pt-btn:active{transform:translateY(0)}
-.pt-btn-green{background:linear-gradient(135deg,#1fa94a,#18c173);color:#fff}
-.pt-btn-light{background:#efefef;color:#333}
-.pt-btn-blue{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff}
+.status-pending {
+  background-color: #f59e0b;
+}
 
-/* modal simple */
-.pt-modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:1000}
-.pt-modal-content{background:#fff;border-radius:16px;max-width:620px;width:92%;box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden}
-.pt-modal-header{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--border)}
-.pt-modal-body{padding:16px}
-.pt-modal-footer{display:flex;justify-content:flex-end;gap:10px;padding:14px;border-top:1px solid var(--border)}
-.pt-close{background:none;border:0;font-size:22px;cursor:pointer;color:#666}
+.status-progress {
+  background-color: #2563eb;
+}
+
+.status-done {
+  background-color: #16a34a;
+}
+
+/* --- Hover filas --- */
+tbody tr:hover {
+  background-color: #f9fafb;
+  transition: background 0.2s ease;
+}

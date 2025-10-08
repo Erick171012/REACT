@@ -1,0 +1,111 @@
+.parent-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f9fafb;
+  font-family: "Inter", sans-serif;
+  color: #111827;
+}
+
+/* =========================
+   SIDEBAR IZQUIERDO
+========================= */
+.parent-sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, #1e3a8a, #2563eb);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem 1rem;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.parent-sidebar .brand {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.parent-sidebar h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.parent-sidebar p {
+  font-size: 0.9rem;
+  color: #dbeafe;
+}
+
+/* Pie del sidebar */
+.logout {
+  text-align: center;
+}
+
+.logout button {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 0.7rem 0;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.logout button:hover {
+  background-color: #dc2626;
+  transform: scale(1.02);
+}
+
+.logout p {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  margin-top: 0.5rem;
+}
+
+/* =========================
+   ZONA PRINCIPAL
+========================= */
+.parent-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fafb;
+}
+
+/* Barra superior */
+.topbar-container {
+  background-color: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Contenido central */
+.parent-content {
+  flex: 1;
+  padding: 2rem 3rem;
+  background-color: #f9fafb;
+}
+
+/* Scroll y responsividad */
+@media (max-width: 1024px) {
+  .parent-layout {
+    flex-direction: column;
+  }
+
+  .parent-sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .parent-content {
+    padding: 1.5rem;
+  }
+}
+

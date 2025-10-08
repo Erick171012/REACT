@@ -1,103 +1,92 @@
-import {
-  ClockIcon,
-  ClipboardDocumentCheckIcon,
-  UserGroupIcon,
-  DocumentTextIcon,
-  CheckCircleIcon,
-  MegaphoneIcon,
-  CalendarDaysIcon,
-} from "@heroicons/react/24/solid";
-import { StatCard, ActivityItem, Tag } from "../components/Cards";
+import React from "react";
+import "./ParentDashboard.css";
 
 export default function ParentDashboard() {
-  const kpis = [
-    { icon: <ClockIcon className="h-7 w-7 text-indigo-600" />, title: "Tiempo en plataforma", value: "3 horas" },
-    { icon: <ClipboardDocumentCheckIcon className="h-7 w-7 text-indigo-600" />, title: "Tareas pendientes", value: "3" },
-    { icon: <UserGroupIcon className="h-7 w-7 text-indigo-600" />, title: "Asistencia", value: "95%" },
-  ];
+  const data = {
+    student: "Carlos González",
+    tasksAssigned: 8,
+    tasksCompleted: 5,
+    tasksPending: 3,
+    attendance: 92,
+  };
 
-  const actividades = [
+  const recentActivities = [
     {
-      icon: <DocumentTextIcon className="h-6 w-6 text-indigo-600" />,
+      id: 1,
       title: "Nueva tarea de Matemáticas",
-      subtitle: "Ejercicios de álgebra — Capítulo 5 — Hace 2 horas",
-      badge: <Tag>Matemáticas</Tag>,
+      detail: "Tapa 5 Álgebra: pág. 45 (vence mañana)",
+      teacher: "Profesor Carlos",
+      date: "07 Oct 2025",
     },
     {
-      icon: <CheckCircleIcon className="h-6 w-6 text-emerald-600" />,
-      title: "Calificación actualizada en Química",
-      subtitle: "Examen parcial: 9.2 — Excelente trabajo — Ayer",
-      badge: <Tag color="green">Química</Tag>,
+      id: 2,
+      title: "Excusa médica aprobada",
+      detail: "Reposo de 2 días por fiebre alta.",
+      teacher: "Coordinación Académica",
+      date: "06 Oct 2025",
     },
     {
-      icon: <MegaphoneIcon className="h-6 w-6 text-rose-600" />,
-      title: "Citación para reunión de padres",
-      subtitle: "31 Mayo 15:00 — Coordinación — Hace 3 días",
-      badge: <Tag color="red">Coordinación</Tag>,
-    },
-  ];
-
-  const eventos = [
-    {
-      fecha: "15 JUN",
-      title: "Festival de Talentos",
-      hora: "2:00 PM - 6:00 PM · Auditorio Principal",
-      chip: "Participar",
-    },
-    {
-      fecha: "20 JUN",
-      title: "Feria del Libro",
-      hora: "8:00 AM - 4:00 PM · Patio Central",
-      chip: "Ver Más",
+      id: 3,
+      title: "Cita confirmada",
+      detail: "Reunión con el profesor de Lengua Castellana",
+      teacher: "Prof. Ana Gómez",
+      date: "05 Oct 2025",
     },
   ];
 
   return (
-    <div className="space-y-8">
-      {/* KPI cards */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-        {kpis.map((k, i) => (
-          <StatCard key={i} icon={k.icon} title={k.title} value={k.value} />
-        ))}
-      </section>
+    <div className="parent-dashboard">
+      <h1 className="page-title">Panel del Padre de Familia</h1>
+      <p className="page-subtitle">
+        Seguimiento académico de <strong>{data.student}</strong>
+      </p>
+
+      {/* Resumen general */}
+      <div className="summary-grid">
+        <div className="summary-card">
+          <h3>Tareas Asignadas</h3>
+          <p className="value">{data.tasksAssigned}</p>
+          <p className="desc">+2 esta semana</p>
+        </div>
+
+        <div className="summary-card">
+          <h3>Completadas</h3>
+          <p className="value success">{data.tasksCompleted}</p>
+          <p className="desc">{(data.tasksCompleted / data.tasksAssigned * 100).toFixed(1)}% de progreso</p>
+        </div>
+
+        <div className="summary-card">
+          <h3>Pendientes</h3>
+          <p className="value warning">{data.tasksPending}</p>
+          <p className="desc">1 vence pronto</p>
+        </div>
+
+        <div className="summary-card">
+          <h3>Asistencia</h3>
+          <p className="value success">{data.attendance}%</p>
+          <p className="desc">{data.attendance > 90 ? "Excelente" : "Regular"}</p>
+        </div>
+      </div>
 
       {/* Actividades recientes */}
-      <section className="space-y-4">
-        <h3 className="text-lg font-semibold text-slate-800">Actividades Recientes</h3>
-        <div className="grid grid-cols-1 gap-4">
-          {actividades.map((a, i) => (
-            <ActivityItem key={i} icon={a.icon} title={a.title} subtitle={a.subtitle} badge={a.badge} />
-          ))}
-        </div>
-      </section>
+      <div className="activities-section">
+        <h2>Actividades recientes</h2>
 
-      {/* Próximos eventos */}
-      <section className="space-y-4">
-        <h3 className="text-lg font-semibold text-slate-800">Próximos Eventos</h3>
-        <div className="grid grid-cols-1 gap-4">
-          {eventos.map((ev, i) => (
-            <div key={i} className="bg-white rounded-2xl ring-1 ring-slate-100 p-5 shadow-sm flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="h-14 w-14 rounded-2xl bg-indigo-600 text-white flex flex-col items-center justify-center">
-                  <span className="text-lg font-bold leading-5">{ev.fecha.split(" ")[0]}</span>
-                  <span className="text-[10px] uppercase tracking-wider">{ev.fecha.split(" ")[1]}</span>
-                </div>
-                <div>
-                  <div className="font-semibold text-slate-800 flex items-center gap-2">
-                    <CalendarDaysIcon className="h-5 w-5 text-indigo-600" />
-                    {ev.title}
-                  </div>
-                  <p className="text-sm text-slate-500 mt-1">{ev.hora}</p>
-                </div>
+        <div className="activities-list">
+          {recentActivities.map((act) => (
+            <div key={act.id} className="activity-card">
+              <div className="activity-info">
+                <h4>{act.title}</h4>
+                <p>{act.detail}</p>
+                <span className="teacher">{act.teacher}</span>
               </div>
-              <button className="text-sm px-3 py-1.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700">
-                {ev.chip}
-              </button>
+              <span className="date">{act.date}</span>
             </div>
           ))}
         </div>
-      </section>
+      </div>
     </div>
   );
 }
+
 

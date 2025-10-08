@@ -1,84 +1,86 @@
-.events-container {
+.parent-events {
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 0.2rem;
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Tarjetas de eventos --- */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
-.events-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #1e293b;
-}
-
-.events-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
 .event-card {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  background: #fff;
-  border: 1px solid #f1f5f9;
+  background: white;
   border-radius: 1rem;
-  padding: 1.25rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.event-date {
-  width: 80px;
-  height: 80px;
-  background: #e0e7ff;
-  border-radius: 0.75rem;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.06);
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  border-left: 5px solid transparent;
 }
 
-.event-day {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #4338ca;
+.event-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
 }
 
-.event-month {
-  font-size: 0.75rem;
+/* --- Tipo de evento --- */
+.event-type {
+  display: inline-block;
+  font-size: 0.8rem;
   font-weight: 600;
-  text-transform: uppercase;
-  color: #4338ca;
+  border-radius: 9999px;
+  padding: 0.3rem 0.75rem;
+  color: white;
+  align-self: flex-start;
 }
 
-.event-info {
-  flex: 1;
+.type-important {
+  background-color: #ef4444;
 }
 
+.type-cultural {
+  background-color: #2563eb;
+}
+
+.type-academic {
+  background-color: #10b981;
+}
+
+/* --- Contenido --- */
 .event-title {
-  font-weight: 600;
-  color: #1e293b;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f2937;
 }
 
-.event-time {
-  font-size: 0.875rem;
-  color: #475569;
-}
-
+.event-date,
 .event-place {
-  font-size: 0.875rem;
-  color: #94a3b8;
+  font-size: 0.9rem;
+  color: #4b5563;
 }
 
-.event-btn {
-  background: #4338ca;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  transition: background 0.2s;
+.event-desc {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.5;
+  margin-top: 0.3rem;
 }
 
-.event-btn:hover {
-  background: #3730a3;
-}

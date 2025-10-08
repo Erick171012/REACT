@@ -1,0 +1,106 @@
+.teacher-excuses {
+  padding: 2rem;
+  color: #1f2937;
+}
+
+.teacher-excuses .title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.teacher-excuses .subtitle {
+  color: #6b7280;
+  margin-top: 4px;
+  margin-bottom: 1.5rem;
+}
+
+/* Tabla */
+.excuses-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.excuses-table th,
+.excuses-table td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+}
+
+.excuses-table th {
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.excuses-table td {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* Estado */
+.status {
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.pending {
+  background: #fef9c3;
+  color: #92400e;
+}
+
+/* Botones */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-approve,
+.btn-reject {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.btn-approve {
+  background-color: #15803d;
+}
+
+.btn-reject {
+  background-color: #b91c1c;
+}
+
+.btn-approve:hover {
+  background-color: #166534;
+}
+
+.btn-reject:hover {
+  background-color: #991b1b;
+}
+
+.no-actions {
+  color: #6b7280;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+

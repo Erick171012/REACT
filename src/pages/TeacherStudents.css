@@ -1,0 +1,76 @@
+.teacher-students {
+  padding: 2rem;
+  color: #1f2937;
+}
+
+.teacher-students .title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.teacher-students .subtitle {
+  color: #6b7280;
+  margin-top: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.students-table {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.students-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.students-table th {
+  background: #f3f4f6;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+.students-table td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+}
+
+.badge-green {
+  background-color: #16a34a;
+}
+
+.badge-blue {
+  background-color: #2563eb;
+}
+
+.badge-yellow {
+  background-color: #f59e0b;
+}
+
+.view-btn {
+  background-color: #1e40af;
+  color: white;
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+}
+
+.view-btn:hover {
+  background-color: #1d4ed8;
+}

@@ -1,0 +1,173 @@
+/* ============================
+   DISEÑO PRINCIPAL - TEACHER LAYOUT
+   Aislado del layout del padre
+   ============================ */
+
+.teacher-layout {
+  display: flex;
+  height: 100vh;
+  background-color: #f8fafc;
+  font-family: "Inter", sans-serif;
+  color: #1f2937;
+  overflow: hidden;
+}
+
+/* ============================
+   SIDEBAR
+   ============================ */
+.teacher-sidebar {
+  width: 250px;
+  background: linear-gradient(180deg, #0a2e6d 0%, #2563eb 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.05);
+}
+
+.teacher-sidebar .brand {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.teacher-sidebar .brand h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.teacher-sidebar .brand p {
+  font-size: 0.875rem;
+  color: #cbd5e1;
+}
+
+.teacher-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.teacher-sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.teacher-sidebar nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.teacher-sidebar nav a.active {
+  background: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.teacher-sidebar .logout {
+  margin-top: 2rem;
+}
+
+.teacher-sidebar .logout button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.teacher-sidebar .logout button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================
+   MAIN AREA
+   ============================ */
+.teacher-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+}
+
+/* ============================
+   HEADER
+   ============================ */
+.teacher-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.teacher-header .left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1e3a8a;
+}
+
+.teacher-header .profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.teacher-header .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.teacher-header .info .name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.teacher-header .info .role {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* ============================
+   CONTENIDO PRINCIPAL
+   ============================ */
+.teacher-content {
+  padding: 2rem;
+  overflow-y: auto;
+  height: calc(100vh - 80px);
+}
+
+/* Scrollbar discreta */
+.teacher-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.teacher-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+

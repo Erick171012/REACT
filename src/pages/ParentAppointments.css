@@ -1,175 +1,151 @@
-/* ===== Citaciones (ParentAppointments) ===== */
+.parent-appointments {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 
-.appt-container {
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 0.2rem;
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Formulario --- */
+.appointment-form {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.06);
+  padding: 1.5rem 2rem;
+}
+
+.appointment-form h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.form-grid {
   display: grid;
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
 }
 
-.appt-header {
+.form-group {
   display: flex;
-  align-items: end;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
-.appt-header h1 {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 800;
-  color: #0f172a; /* slate-900 */
+.form-group.full {
+  grid-column: span 2;
 }
 
-.appt-subtitle {
-  margin: 6px 0 0;
-  color: #475569; /* slate-600 */
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
 }
 
-/* Lista */
-.appt-list {
-  display: grid;
-  gap: 18px;
+.form-group input,
+.form-group textarea,
+.form-group select {
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  color: #111827;
 }
 
-/* Card base */
-.appt-card {
-  position: relative;
-  background: #fff;
-  border: 1px solid #eef2f7;
-  border-radius: 18px;
-  padding: 18px 20px;
-  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 1px #2563eb50;
 }
 
-/* Borde sutil por prioridad */
-.appt-card.is-urgent {
-  background: linear-gradient(#fff, #fff) padding-box,
-              radial-gradient(120% 120% at 0% 0%, #ffe4e6, transparent) border-box;
-  border: 1px solid #fecaca; /* rose-200 */
-}
-.appt-card.is-normal {
-  background: linear-gradient(#fff, #fff) padding-box,
-              radial-gradient(120% 120% at 0% 0%, #eef2ff, transparent) border-box;
-  border: 1px solid #e0e7ff; /* indigo-100 */
-}
-
-/* Chip de prioridad */
-.appt-chip {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .3px;
-}
-.chip-danger {
-  background: #fee2e2;
-  color: #991b1b;
-}
-.chip-info {
-  background: #e0e7ff;
-  color: #3730a3;
-}
-
-/* Header */
-.appt-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 6px;
-}
-.appt-type {
-  font-weight: 700;
-  color: #1f2937; /* gray-800 */
-}
-.appt-confirmed {
-  font-size: 13px;
-  color: #16a34a; /* green-600 */
-  font-weight: 700;
-}
-
-/* Título */
-.appt-title {
-  margin: 6px 0 8px 0;
-  font-size: 20px;
-  font-weight: 800;
-  color: #0f172a;
-}
-
-/* Detalles */
-.appt-details {
-  margin: 0;
-  padding-left: 18px;
-  color: #475569;
-}
-.appt-details li {
-  margin: 2px 0;
-}
-
-/* Acciones */
-.appt-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.btn {
-  border: 0;
-  border-radius: 10px;
-  padding: 10px 14px;
-  font-size: 14px;
+.submit-btn {
+  margin-top: 1rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.2rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform .12s ease, opacity .12s ease;
+  transition: background 0.2s;
 }
-.btn:hover { transform: translateY(-1px); opacity: .95; }
 
-.btn-success { background: #059669; color: #fff; }  /* emerald-600 */
-.btn-warn    { background: #f59e0b; color: #fff; }  /* amber-500 */
+.submit-btn:hover {
+  background-color: #1e40af;
+}
 
-/* Reminders box */
-.appt-reminders {
-  margin-top: 14px;
-  padding: 14px;
-  border-radius: 14px;
-  background: #f8fafc; /* slate-50 */
-  border-left: 4px solid #2563eb; /* blue-600 */
-  color: #475569;
+/* --- Tabla --- */
+.appointment-list {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.06);
+  padding: 1.5rem 2rem;
 }
-.reminder-item + .reminder-item { margin-top: 6px; }
 
-/* Config */
-.appt-config {
-  margin-top: 6px;
-  background: #fff;
-  border: 1px solid #eef2f7;
-  border-radius: 18px;
-  padding: 18px 20px;
+.appointment-list h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
 }
-.appt-config h2 {
-  margin: 0 0 14px 0;
-  font-size: 18px;
-  font-weight: 800;
-  color: #0f172a;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
-.config-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 12px;
+
+th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  color: #374151;
+  font-weight: 600;
+  background-color: #f3f4f6;
 }
-.config-item {
-  font-size: 14px;
-  color: #334155;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+
+td {
+  padding: 0.8rem 1rem;
+  color: #111827;
+  border-bottom: 1px solid #f3f4f6;
 }
-.config-select {
-  margin-left: 8px;
-  padding: 8px 10px;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  font-size: 14px;
-  color: #334155;
-  background: #fff;
+
+/* --- Estados --- */
+.status-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.3rem 0.75rem;
+  color: white;
 }
+
+.status-pending {
+  background-color: #f59e0b;
+}
+
+.status-approved {
+  background-color: #16a34a;
+}
+
+.status-rejected {
+  background-color: #dc2626;
+}
+
+tbody tr:hover {
+  background-color: #f9fafb;
+  transition: background 0.2s ease;
+}
+
