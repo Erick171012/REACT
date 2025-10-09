@@ -1,0 +1,91 @@
+.student-schedule {
+  padding: 1.5rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 0.3rem;
+}
+
+.subtitle {
+  color: #475569;
+  margin-bottom: 1.5rem;
+}
+
+.loading {
+  color: #6b7280;
+}
+
+.empty-box {
+  background: #f9fafb;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.day-section {
+  margin-bottom: 2rem;
+}
+
+.day-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1d4ed8;
+  margin-bottom: 0.7rem;
+}
+
+.schedule-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.class-card {
+  background: white;
+  border-left: 5px solid #2563eb;
+  border-radius: 1rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  padding: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.class-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+}
+
+.class-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.class-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #1e3a8a;
+}
+
+.time-tag {
+  background: #e0f2fe;
+  color: #0369a1;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+
+.teacher {
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+.room {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+

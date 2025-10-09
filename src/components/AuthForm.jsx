@@ -16,7 +16,7 @@ const ROLES = [
 
 const SUBJECTS = [
   "Matemáticas",
-  "Español", 
+  "Español",
   "Ciencias Naturales",
   "Ciencias Sociales",
   "Inglés",
@@ -28,10 +28,10 @@ const SUBJECTS = [
   "Filosofía",
   "Química",
   "Física",
-  "Biología"
+  "Biología",
 ];
 
-export default function AuthForm({ mode }) {
+export default function AuthForm({ mode, onLogin, onSuccess }) {
   const isRegister = mode === "register";
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -49,12 +49,13 @@ export default function AuthForm({ mode }) {
     e.preventDefault();
     setMsg(null);
     setLoading(true);
-    
+
     try {
       if (isRegister) {
+        // --- Registro ---
         const cred = await createUserWithEmailAndPassword(auth, email, pass);
         await updateProfile(cred.user, { displayName: name });
-        
+
         const userData = {
           uid: cred.user.uid,
           email,
@@ -64,29 +65,52 @@ export default function AuthForm({ mode }) {
         };
 
         if (phone) userData.phone = phone;
-        if (role === "teacher" && employeeCode) userData.employeeCode = employeeCode;
-        if (role === "teacher" && mainSubject) userData.mainSubject = mainSubject;
-        if (institutionalEmail) userData.institutionalEmail = institutionalEmail;
+        if (role === "teacher" && employeeCode)
+          userData.employeeCode = employeeCode;
+        if (role === "teacher" && mainSubject)
+          userData.mainSubject = mainSubject;
+        if (institutionalEmail)
+          userData.institutionalEmail = institutionalEmail;
 
         await setDoc(doc(db, "users", cred.user.uid), userData);
-        setMsg({ type: "success", text: "Registro exitoso. Ahora inicia sesión." });
+
+        setMsg({
+          type: "success",
+          text: "✅ Registro exitoso. Ahora inicia sesión.",
+        });
       } else {
+        // --- Inicio de sesión ---
         const { user } = await signInWithEmailAndPassword(auth, email, pass);
-        const snap = await getDoc(doc(db, "users", user.uid));
-        const data = snap.exists() ? snap.data() : { role: "desconocido" };
+        const docRef = doc(db, "users", user.uid);
+        const snap = await getDoc(docRef);
 
+        if (!snap.exists()) {
+          setMsg({
+            type: "error",
+            text: "No se encontró tu perfil en la base de datos. Contacta al administrador.",
+          });
+          return;
+        }
+
+        const data = snap.data();
+
+        // Guarda info local para layouts
+        localStorage.setItem("uid", user.uid);
         localStorage.setItem("role", data.role);
+        localStorage.setItem("name", data.name);
 
-        const path =
-          data.role === "parent"
-            ? "/parent"
-            : data.role === "teacher"
-            ? "/teacher"
-            : data.role === "student"
-            ? "/student"
-            : "/dashboard";
-
-        window.location.href = path;
+        // Si App.jsx envió una función onLogin (nuevo flujo)
+        if (onLogin) {
+          await onLogin(email, pass);
+        } else if (onSuccess) {
+          onSuccess(data.role);
+        } else {
+          // fallback por si algo falla
+          if (data.role === "parent") window.location.href = "/parent";
+          else if (data.role === "teacher") window.location.href = "/teacher";
+          else if (data.role === "student") window.location.href = "/student";
+          else if (data.role === "admin") window.location.href = "/admin";
+        }
       }
     } catch (err) {
       setMsg({ type: "error", text: traducirError(err) });
@@ -114,10 +138,10 @@ export default function AuthForm({ mode }) {
 
       {isRegister && (
         <>
-          {/* Teléfono/WhatsApp */}
+          {/* Teléfono */}
           <div>
             <label className="flex items-center mb-2 text-sm font-medium text-gray-600">
-              📱 Teléfono/WhatsApp
+              📱 Teléfono / WhatsApp
             </label>
             <input
               type="tel"
@@ -177,7 +201,7 @@ export default function AuthForm({ mode }) {
             </select>
           </div>
 
-          {/* Código de Empleado - Solo para profesores */}
+          {/* Código de Empleado (solo profesores) */}
           {role === "teacher" && (
             <div>
               <label className="flex items-center mb-2 text-sm font-medium text-gray-600">
@@ -189,13 +213,10 @@ export default function AuthForm({ mode }) {
                 value={employeeCode}
                 onChange={(e) => setEmployeeCode(e.target.value)}
               />
-              <p className="mt-1 text-xs text-orange-600">
-                ⚠️ Solo personal autorizado puede registrarse como profesor
-              </p>
             </div>
           )}
 
-          {/* Materia Principal - Solo para profesores */}
+          {/* Materia Principal */}
           {role === "teacher" && (
             <div>
               <label className="flex items-center mb-2 text-sm font-medium text-gray-600">
@@ -228,12 +249,9 @@ export default function AuthForm({ mode }) {
               value={institutionalEmail}
               onChange={(e) => setInstitutionalEmail(e.target.value)}
             />
-            <p className="mt-1 text-xs text-gray-500">
-              Debe usar el email institucional del colegio
-            </p>
           </div>
 
-          {/* Nombre - Lo pongo al final para el registro */}
+          {/* Nombre */}
           <div>
             <label className="flex items-center mb-2 text-sm font-medium text-gray-600">
               👤 Nombre Completo
@@ -249,17 +267,17 @@ export default function AuthForm({ mode }) {
         </>
       )}
 
-      {/* Botón de envío */}
+      {/* Botón */}
       <button
         type="submit"
         disabled={loading}
         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
       >
         <span>📝</span>
-        <span>{loading ? "Procesando..." : "Iniciar Sesión"}</span>
+        <span>{loading ? "Procesando..." : isRegister ? "Registrarse" : "Iniciar Sesión"}</span>
       </button>
 
-      {/* Mensaje de estado */}
+      {/* Mensaje */}
       {msg && (
         <div
           className={`rounded-xl px-4 py-3 text-sm ${

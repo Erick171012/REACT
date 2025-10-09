@@ -1,21 +1,20 @@
 /* ============================
    LAYOUT INSTITUCIONAL
-   Padre de Familia - Colegio Cooperativo Garzón
+   Colegio Cooperativo Garzón
    ============================ */
 
-.parent-layout {
+.student-layout {
   display: flex;
   min-height: 100vh;
   background-color: #f9fafb;
   font-family: "Inter", sans-serif;
   color: #1f2937;
-  overflow: hidden;
 }
 
 /* ============================
    SIDEBAR
    ============================ */
-.parent-sidebar {
+.student-sidebar {
   width: 270px;
   background: linear-gradient(180deg, #0a2e6d 0%, #1e3a8a 50%, #2563eb 100%);
   color: white;
@@ -26,34 +25,31 @@
   box-shadow: 4px 0 12px rgba(0, 0, 0, 0.05);
 }
 
-.parent-sidebar .brand {
+.student-sidebar .brand {
   text-align: left;
   margin-bottom: 1.5rem;
 }
 
-.parent-sidebar .brand h1 {
+.student-sidebar .brand h1 {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
   color: #ffffff;
 }
 
-.parent-sidebar .brand p {
+.student-sidebar .brand p {
   font-size: 0.85rem;
   color: #dbeafe;
 }
 
-/* ============================
-   NAVIGATION
-   ============================ */
-.parent-sidebar nav {
+.student-sidebar nav {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
   margin-top: 0.5rem;
 }
 
-.parent-sidebar nav a {
+.student-sidebar nav a {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -65,26 +61,24 @@
   transition: all 0.2s ease-in-out;
 }
 
-.parent-sidebar nav a:hover {
+.student-sidebar nav a:hover {
   background: rgba(255, 255, 255, 0.15);
 }
 
-.parent-sidebar nav a.active {
+.student-sidebar nav a.active {
   background: white;
   color: #0a2e6d;
   font-weight: 600;
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
-/* ============================
-   LOGOUT BUTTON
-   ============================ */
-.parent-sidebar .logout {
+/* BOTÓN DE CERRAR SESIÓN */
+.student-sidebar .logout {
   margin-top: auto;
   padding-top: 2rem;
 }
 
-.parent-sidebar .logout button {
+.student-sidebar .logout button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,14 +94,14 @@
   transition: all 0.2s ease;
 }
 
-.parent-sidebar .logout button:hover {
+.student-sidebar .logout button:hover {
   background: rgba(255, 255, 255, 0.25);
 }
 
 /* ============================
-   MAIN AREA
+   ÁREA PRINCIPAL
    ============================ */
-.parent-main {
+.student-main {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -115,9 +109,9 @@
 }
 
 /* ============================
-   HEADER
+   ENCABEZADO
    ============================ */
-.parent-header {
+.student-header {
   background: white;
   display: flex;
   justify-content: space-between;
@@ -130,7 +124,7 @@
   z-index: 10;
 }
 
-.parent-header .left {
+.student-header .left {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -139,13 +133,13 @@
   font-size: 1rem;
 }
 
-.parent-header .profile {
+.student-header .profile {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.parent-header .avatar {
+.student-header .avatar {
   width: 42px;
   height: 42px;
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
@@ -159,25 +153,25 @@
   box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
 }
 
-.parent-header .info p {
+.student-header .info p {
   margin: 0;
   line-height: 1.1;
 }
 
-.parent-header .info .name {
+.student-header .info .name {
   font-weight: 600;
   color: #111827;
 }
 
-.parent-header .info .role {
+.student-header .info .role {
   font-size: 0.85rem;
   color: #6b7280;
 }
 
 /* ============================
-   CONTENT
+   CONTENIDO PRINCIPAL
    ============================ */
-.parent-content {
+.student-content {
   padding: 2rem;
   flex: 1;
   background: #f3f4f6;
@@ -185,11 +179,11 @@
   height: calc(100vh - 80px);
 }
 
-.parent-content::-webkit-scrollbar {
+.student-content::-webkit-scrollbar {
   width: 8px;
 }
 
-.parent-content::-webkit-scrollbar-thumb {
+.student-content::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 8px;
 }

@@ -1,16 +1,49 @@
 import { useState } from "react";
 import AuthForm from "./components/AuthForm";
 import { useNavigate } from "react-router-dom";
-
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "./firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function App() {
   const [mode, setMode] = useState("login");
-   const navigate = useNavigate(); 
+  const navigate = useNavigate();
+
+  const handleLogin = async (email, password) => {
+    try {
+      // 🔹 Inicia sesión en Firebase
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // 🔹 Obtiene el documento del usuario en Firestore
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+
+        // Guarda los datos en localStorage
+        localStorage.setItem("uid", user.uid);
+        localStorage.setItem("role", data.role);
+        localStorage.setItem("name", data.name);
+
+        // 🔹 Redirige según el rol
+        if (data.role === "student") navigate("/student");
+        else if (data.role === "teacher") navigate("/teacher");
+        else if (data.role === "parent") navigate("/parent");
+        else alert("Rol no reconocido en el sistema.");
+      } else {
+        alert("No se encontró el usuario en Firestore.");
+      }
+    } catch (error) {
+      console.error("Error de inicio de sesión:", error.message);
+      alert("Correo o contraseña incorrectos.");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 relative overflow-hidden flex items-center justify-center p-4">
-      
-      {/* Círculos decorativos de fondo */}
+      {/* Círculos decorativos */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-20 -left-20 w-80 h-80 bg-white opacity-5 rounded-full"></div>
         <div className="absolute top-1/4 -right-32 w-96 h-96 bg-white opacity-5 rounded-full"></div>
@@ -20,8 +53,7 @@ export default function App() {
 
       {/* Contenedor principal */}
       <div className="relative z-10 w-full max-w-md">
-        
-        {/* Logo y título */}
+        {/* Logo */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-600 rounded-full mb-4 shadow-lg">
             <span className="text-white text-2xl font-bold">CC</span>
@@ -32,8 +64,7 @@ export default function App() {
 
         {/* Contenedor del formulario */}
         <div className="bg-white rounded-3xl shadow-2xl p-8">
-          
-          {/* Pestañas de navegación */}
+          {/* Tabs */}
           <div className="grid grid-cols-2 gap-2 bg-gray-100 rounded-xl p-1 mb-6">
             <button
               onClick={() => setMode("login")}
@@ -59,15 +90,15 @@ export default function App() {
 
           {/* Formulario */}
           <AuthForm
-  mode={mode}
-  onSuccess={(role = "parent") => {
-    localStorage.setItem("role", role);
-    navigate("/parent", { replace: true });
-    
-
-  }}
-/>
-
+            mode={mode}
+            onLogin={handleLogin}
+            onSuccess={(role) => {
+              localStorage.setItem("role", role);
+              if (role === "student") navigate("/student");
+              else if (role === "teacher") navigate("/teacher");
+              else navigate("/parent");
+            }}
+          />
 
           {/* Footer */}
           <p className="mt-6 text-center text-xs text-gray-500">
@@ -78,4 +109,5 @@ export default function App() {
     </div>
   );
 }
+
 

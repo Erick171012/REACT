@@ -1,45 +1,101 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-import Sidebar from "../components/Sidebar.jsx";
-import TopBar from "../components/TopBar.jsx";
-import "./ParentLayout.css"; // ✅ corregido: está en la misma carpeta
+import { NavLink, Outlet } from "react-router-dom";
+import {
+  Home,
+  ClipboardList,
+  Calendar,
+  FileText,
+  Users,
+  Sparkles,
+  MessageSquare,
+  LogOut,
+  Bell,
+} from "lucide-react";
+import "./ParentLayout.css";
 
 export default function ParentLayout() {
   const handleLogout = () => {
-    try {
-      localStorage.removeItem("role");
-    } catch {}
+    localStorage.clear();
     window.location.href = "/";
+  };
+
+  const menuItems = [
+    { name: "Inicio", icon: <Home size={18} />, path: "/parent" },
+    { name: "Tareas de mi Hijo", icon: <ClipboardList size={18} />, path: "/parent/tasks" },
+    { name: "Horario", icon: <Calendar size={18} />, path: "/parent/schedule" },
+    { name: "Excusas Médicas", icon: <FileText size={18} />, path: "/parent/excuses" },
+    { name: "Citaciones", icon: <Users size={18} />, path: "/parent/appointments" },
+    { name: "Eventos", icon: <Sparkles size={18} />, path: "/parent/events" },
+    { name: "Comunicación", icon: <MessageSquare size={18} />, path: "/parent/messages" },
+  ];
+
+  // Simulación temporal (en el futuro se conecta a Firestore)
+  const parent = {
+    name: "María González",
+    role: "Padre de Familia",
+  };
+
+  // Iniciales del avatar
+  const getInitials = (name) => {
+    if (!name) return "CC";
+    const parts = name.trim().split(" ");
+    return parts.length === 1
+      ? parts[0][0].toUpperCase()
+      : (parts[0][0] + parts[1][0]).toUpperCase();
   };
 
   return (
     <div className="parent-layout">
-      {/* Sidebar fijo a la izquierda */}
+      {/* Sidebar lateral */}
       <aside className="parent-sidebar">
         <div className="brand">
           <h1>Colegio Cooperativo</h1>
           <p>Agenda Estudiantil Digital</p>
         </div>
 
-        {/* Menú de navegación */}
-        <Sidebar />
+        {/* Navegación */}
+        <nav>
+          {menuItems.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.path}
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              {item.icon}
+              {item.name}
+            </NavLink>
+          ))}
+        </nav>
 
-        {/* Pie del sidebar */}
-        <footer className="logout">
-          <button onClick={handleLogout}>Cerrar Sesión</button>
-          <p>© 2025 Colegio Cooperativo</p>
-        </footer>
+        {/* Cerrar sesión */}
+        <div className="logout">
+          <button onClick={handleLogout}>
+            <LogOut size={18} /> Cerrar Sesión
+          </button>
+        </div>
       </aside>
 
-      {/* Contenido principal */}
+      {/* Área principal */}
       <main className="parent-main">
-        <header className="topbar-container">
-          <TopBar />
+        <header className="parent-header">
+          <div className="left">
+            <Bell size={18} />
+            Panel del Padre de Familia
+          </div>
+
+          <div className="profile">
+            <div className="avatar">{getInitials(parent.name)}</div>
+            <div className="info">
+              <p className="name">{parent.name}</p>
+              <p className="role">{parent.role}</p>
+            </div>
+          </div>
         </header>
 
-        <section className="parent-content">
+        {/* Contenido dinámico */}
+        <div className="parent-content">
           <Outlet />
-        </section>
+        </div>
       </main>
     </div>
   );

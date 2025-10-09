@@ -12,6 +12,7 @@ import {
   Bell,
   LogOut,
 } from "lucide-react";
+import React from "react";
 
 export default function TeacherLayout() {
   const handleLogout = () => {
@@ -29,6 +30,21 @@ export default function TeacherLayout() {
     { name: "Enviar Citas", icon: <Megaphone size={18} />, path: "/teacher/appointments" },
     { name: "Comunicación", icon: <MessageSquare size={18} />, path: "/teacher/comms" },
   ];
+
+  // Simulación temporal (cuando conectemos Firestore esto será dinámico)
+  const teacher = {
+    name: "Prof. Ana Gómez",
+    role: "Profesor",
+  };
+
+  // Iniciales del avatar
+  const getInitials = (name) => {
+    if (!name) return "CC";
+    const parts = name.trim().split(" ");
+    return parts.length === 1
+      ? parts[0][0].toUpperCase()
+      : (parts[0][0] + parts[1][0]).toUpperCase();
+  };
 
   return (
     <div className="teacher-layout">
@@ -59,7 +75,7 @@ export default function TeacherLayout() {
         </div>
       </aside>
 
-      {/* Contenido principal */}
+      {/* Área principal */}
       <main className="teacher-main">
         <header className="teacher-header">
           <div className="left">
@@ -68,10 +84,10 @@ export default function TeacherLayout() {
           </div>
 
           <div className="profile">
-            <div className="avatar">AG</div>
+            <div className="avatar">{getInitials(teacher.name)}</div>
             <div className="info">
-              <p className="name">Prof. Ana Gómez</p>
-              <p className="role">Profesor</p>
+              <p className="name">{teacher.name}</p>
+              <p className="role">{teacher.role}</p>
             </div>
           </div>
         </header>
@@ -83,3 +99,4 @@ export default function TeacherLayout() {
     </div>
   );
 }
+

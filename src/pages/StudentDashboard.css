@@ -1,0 +1,177 @@
+/* ============================
+   Panel del Estudiante (Dashboard)
+   ============================ */
+
+/* Fondo general del panel */
+.student-dashboard {
+  background-color: #f8fafc; /* gris claro */
+  padding: 2rem;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+/* Título principal */
+.student-dashboard .title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #1e3a8a; /* azul institucional */
+  margin-bottom: 1.5rem;
+}
+
+/* ============================
+   Tarjetas superiores
+   ============================ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card .icon {
+  background: #eef2ff;
+  padding: 0.7rem;
+  border-radius: 0.8rem;
+  font-size: 1.4rem;
+}
+
+/* Colores personalizados para íconos */
+.icon.purple {
+  color: #7e22ce;
+  background: #f3e8ff;
+}
+
+.icon.blue {
+  color: #2563eb;
+  background: #dbeafe;
+}
+
+.icon.green {
+  color: #16a34a;
+  background: #dcfce7;
+}
+
+.icon.pink {
+  color: #db2777;
+  background: #fce7f3;
+}
+
+/* Texto de información */
+.stat-card .info h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.stat-card .info p {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ============================
+   Actividades recientes
+   ============================ */
+.activities {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+.activities h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+}
+
+.activity-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafb;
+  border-radius: 0.8rem;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.8rem;
+  border-left: 4px solid #2563eb;
+  transition: background 0.2s ease;
+}
+
+.activity-card:hover {
+  background: #f1f5f9;
+}
+
+.activity-info h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.2rem;
+}
+
+.activity-info p {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 0.3rem;
+}
+
+.activity-info .time {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* Etiquetas de materias */
+.tag {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.6rem;
+  text-transform: capitalize;
+}
+
+.tag.blue {
+  background-color: #2563eb;
+}
+
+.tag.green {
+  background-color: #16a34a;
+}
+
+.tag.pink {
+  background-color: #db2777;
+}
+
+/* Responsividad */
+@media (max-width: 640px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    align-self: flex-end;
+  }
+}
+

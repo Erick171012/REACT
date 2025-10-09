@@ -1,28 +1,78 @@
-import TopBar from "../components/TopBar";
+import "./StudentDashboard.css";
+import { BookOpen, ClipboardList, MessageSquare, CalendarDays } from "lucide-react";
 
 export default function StudentDashboard() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0A2E6D] via-[#1E3A8A] to-[#2563EB] p-6">
-      <div className="mx-auto max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden">
-        <TopBar title="Estudiante" />
-        <div className="p-8 grid gap-6 md:grid-cols-3">
-          <Card title="Mis Tareas" desc="Pendientes, vencidas y completadas." />
-          <Card title="Mi Horario" desc="Clases del día y semana." />
-          <Card title="Eventos" desc="Pruebas, salidas y avisos." />
+    <div className="student-dashboard">
+      <h2 className="title">📚 Panel Principal</h2>
+
+      {/* Tarjetas superiores */}
+      <div className="stats-grid">
+        <div className="stat-card">
+          <BookOpen className="icon purple" />
+          <div className="info">
+            <h3>8.5</h3>
+            <p>Promedio General</p>
+          </div>
+        </div>
+
+        <div className="stat-card">
+          <ClipboardList className="icon blue" />
+          <div className="info">
+            <h3>3</h3>
+            <p>Tareas Pendientes</p>
+          </div>
+        </div>
+
+        <div className="stat-card">
+          <CalendarDays className="icon green" />
+          <div className="info">
+            <h3>95%</h3>
+            <p>Asistencia</p>
+          </div>
+        </div>
+
+        <div className="stat-card">
+          <MessageSquare className="icon pink" />
+          <div className="info">
+            <h3>2</h3>
+            <p>Mensajes Nuevos</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Actividades recientes */}
+      <div className="activities">
+        <h3>📅 Actividades Recientes</h3>
+
+        <div className="activity-card">
+          <div className="activity-info">
+            <h4>Nueva tarea de Matemáticas</h4>
+            <p>Ejercicios de álgebra – Capítulo 5</p>
+            <span className="time">Hace 2 horas</span>
+          </div>
+          <span className="tag blue">Matemáticas</span>
+        </div>
+
+        <div className="activity-card">
+          <div className="activity-info">
+            <h4>Reunión de grupo</h4>
+            <p>Organización del proyecto de ciencias</p>
+            <span className="time">Ayer</span>
+          </div>
+          <span className="tag green">Ciencias</span>
+        </div>
+
+        <div className="activity-card">
+          <div className="activity-info">
+            <h4>Entrega de tarea de Inglés</h4>
+            <p>Ensayo: “My Favorite Book”</p>
+            <span className="time">Hace 3 días</span>
+          </div>
+          <span className="tag pink">Inglés</span>
         </div>
       </div>
     </div>
   );
 }
 
-function Card({ title, desc }) {
-  return (
-    <div className="rounded-2xl border border-[#EEF2FF] p-6 shadow-sm">
-      <h3 className="font-semibold text-[#1F2937]">{title}</h3>
-      <p className="text-sm text-[#6B7280] mt-1">{desc}</p>
-      <button className="mt-4 px-3 py-2 rounded-xl bg-[#1E40AF] text-white text-sm hover:bg-[#1E3A8A]">
-        Entrar
-      </button>
-    </div>
-  );
-}

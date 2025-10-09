@@ -7,6 +7,9 @@
   font-size: 1.8rem;
   font-weight: 700;
   color: #1e3a8a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .teacher-attendance .subtitle {
@@ -15,91 +18,92 @@
   margin-bottom: 1.5rem;
 }
 
-/* Tabla */
 .attendance-table {
-  width: 100%;
-  border-collapse: collapse;
   background: white;
-  border-radius: 0.75rem;
-  overflow: hidden;
+  border-radius: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
-.attendance-table th,
-.attendance-table td {
-  padding: 0.9rem 1rem;
-  text-align: left;
+.attendance-table table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .attendance-table th {
   background: #f3f4f6;
+  text-align: left;
+  padding: 0.75rem 1rem;
   color: #374151;
   font-weight: 600;
-  border-bottom: 2px solid #e5e7eb;
 }
 
 .attendance-table td {
-  border-bottom: 1px solid #f3f4f6;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #e5e7eb;
 }
 
 .status {
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
   font-weight: 600;
-  font-size: 0.9rem;
+  color: white;
 }
 
-.present {
-  background: #dcfce7;
-  color: #166534;
+.status-green {
+  background-color: #16a34a;
 }
 
-.absent {
-  background: #fee2e2;
-  color: #991b1b;
+.status-red {
+  background-color: #dc2626;
 }
 
-/* Botones */
-.btn-toggle {
+.mark-present,
+.mark-absent {
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
   cursor: pointer;
   color: white;
-  transition: background-color 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
-.btn-green {
-  background-color: #15803d;
+.mark-present {
+  background-color: #16a34a;
 }
 
-.btn-red {
-  background-color: #b91c1c;
+.mark-present:hover {
+  opacity: 0.9;
 }
 
-.btn-green:hover {
-  background-color: #166534;
+.mark-absent {
+  background-color: #dc2626;
 }
 
-.btn-red:hover {
-  background-color: #991b1b;
+.mark-absent:hover {
+  opacity: 0.9;
+}
+
+.save-section {
+  margin-top: 1.5rem;
+  text-align: center;
 }
 
 .save-btn {
   background-color: #1e3a8a;
   color: white;
   border: none;
-  border-radius: 0.75rem;
   padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  border-radius: 0.6rem;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 1.5rem;
   transition: background-color 0.2s ease;
 }
 
 .save-btn:hover {
-  background-color: #1e40af;
+  background-color: #2563eb;
 }
+
 

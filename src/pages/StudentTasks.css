@@ -1,0 +1,156 @@
+/* ============================
+   Mis Tareas - Estudiante
+   ============================ */
+.student-tasks {
+  background-color: #f8fafc;
+  padding: 2rem;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+/* Título principal */
+.student-tasks .title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e3a8a; /* azul institucional */
+  margin-bottom: 1.5rem;
+}
+
+.icon {
+  color: #2563eb;
+}
+
+/* ============================
+   Tarjetas de tareas
+   ============================ */
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.task-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.2rem 1.4rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid #2563eb;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Encabezado */
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.task-header h3 {
+  font-size: 1.1rem;
+  color: #1e293b;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Estado de tarea */
+.status {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.4rem;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.status.completada {
+  background-color: #16a34a;
+}
+
+.status.pendiente {
+  background-color: #eab308;
+}
+
+.status.en-curso,
+.status.in-progress {
+  background-color: #2563eb;
+}
+
+/* Detalles */
+.subject {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #2563eb;
+  margin-bottom: 0.2rem;
+}
+
+.desc {
+  font-size: 0.85rem;
+  color: #475569;
+  margin-bottom: 0.8rem;
+}
+
+/* Footer */
+.task-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.pending-icon {
+  color: #eab308;
+}
+
+.done-icon {
+  color: #16a34a;
+}
+
+/* Colores laterales según estado */
+.task-card.pending {
+  border-left-color: #eab308;
+}
+
+.task-card.completed {
+  border-left-color: #16a34a;
+}
+
+.task-card.in-progress {
+  border-left-color: #2563eb;
+}
+
+/* Textos de carga o vacío */
+.loading,
+.no-tasks {
+  color: #6b7280;
+  font-size: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* ============================
+   Responsividad
+   ============================ */
+@media (max-width: 640px) {
+  .tasks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .task-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+}
