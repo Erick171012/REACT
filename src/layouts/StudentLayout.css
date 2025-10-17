@@ -16,7 +16,7 @@
    ============================ */
 .student-sidebar {
   width: 270px;
-  background: linear-gradient(180deg, #0a2e6d 0%, #1e3a8a 50%, #2563eb 100%);
+  background: linear-gradient(180deg, #0b1d4a 0%, #102d6a 50%, #17429c 100%);
   color: white;
   display: flex;
   flex-direction: column;
@@ -39,9 +39,12 @@
 
 .student-sidebar .brand p {
   font-size: 0.85rem;
-  color: #dbeafe;
+  color: #c7d9ff;
 }
 
+/* ============================
+   NAVIGATION
+   ============================ */
 .student-sidebar nav {
   display: flex;
   flex-direction: column;
@@ -58,16 +61,17 @@
   color: white;
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out, transform 0.1s ease-in-out;
 }
 
 .student-sidebar nav a:hover {
   background: rgba(255, 255, 255, 0.15);
+  transform: translateX(4px);
 }
 
 .student-sidebar nav a.active {
   background: white;
-  color: #0a2e6d;
+  color: #0b1d4a;
   font-weight: 600;
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
 }
@@ -128,7 +132,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #0a2e6d;
+  color: #0b1d4a;
   font-weight: 600;
   font-size: 1rem;
 }
@@ -142,7 +146,7 @@
 .student-header .avatar {
   width: 42px;
   height: 42px;
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background: linear-gradient(135deg, #102d6a, #17429c);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -150,7 +154,7 @@
   justify-content: center;
   font-weight: 600;
   font-size: 0.95rem;
-  box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 0 8px rgba(23, 66, 156, 0.3);
 }
 
 .student-header .info p {
@@ -187,5 +191,6 @@
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 8px;
 }
+
 
 

@@ -2,31 +2,10 @@ import React, { useState } from "react";
 import "./ParentAppointments.css";
 
 export default function ParentAppointments() {
-  const [appointments, setAppointments] = useState([
+  const [appointments] = useState([
     { date: "08 Oct 2025", teacher: "Prof. Ana Gómez", reason: "Bajo rendimiento en Matemáticas", status: "Pendiente" },
     { date: "02 Oct 2025", teacher: "Coordinación Académica", reason: "Revisión de conducta", status: "Aprobada" },
   ]);
-
-  const [newAppointment, setNewAppointment] = useState({
-    date: "",
-    teacher: "",
-    reason: "",
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!newAppointment.date || !newAppointment.teacher || !newAppointment.reason) {
-      alert("Por favor completa todos los campos.");
-      return;
-    }
-
-    const updated = [
-      ...appointments,
-      { ...newAppointment, status: "Pendiente" },
-    ];
-    setAppointments(updated);
-    setNewAppointment({ date: "", teacher: "", reason: "" });
-  };
 
   const getStatusClass = (status) => {
     switch (status) {
@@ -39,57 +18,24 @@ export default function ParentAppointments() {
 
   return (
     <div className="parent-appointments">
-      <h1 className="page-title">Solicitar Cita</h1>
+      <h1 className="page-title">Solicitudes de Citas</h1>
       <p className="page-subtitle">
-        Solicita reuniones con docentes o coordinación para <strong>Carlos González</strong>.
+        En esta sección puedes consultar las citas académicas registradas para tu acudido.  
+        <br />
+        <strong>Las nuevas solicitudes deben ser gestionadas por los docentes o la coordinación académica.</strong>
       </p>
 
-      {/* Formulario nueva cita */}
-      <form className="appointment-form" onSubmit={handleSubmit}>
-        <h2>📅 Nueva Solicitud</h2>
+      {/* Mensaje institucional */}
+      <div className="notice-box">
+        <h3>⚠️ Aviso Importante</h3>
+        <p>
+          Estimado padre de familia, el módulo de solicitud de citas está
+          deshabilitado. Todas las reuniones deben ser programadas directamente
+          por los docentes o la coordinación del Colegio Cooperativo Garzón.
+        </p>
+      </div>
 
-        <div className="form-grid">
-          <div className="form-group">
-            <label>Fecha Deseada *</label>
-            <input
-              type="date"
-              value={newAppointment.date}
-              onChange={(e) => setNewAppointment({ ...newAppointment, date: e.target.value })}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Dirigido a *</label>
-            <select
-              value={newAppointment.teacher}
-              onChange={(e) => setNewAppointment({ ...newAppointment, teacher: e.target.value })}
-              required
-            >
-              <option value="">Selecciona...</option>
-              <option>Prof. Ana Gómez</option>
-              <option>Prof. Juan Martínez</option>
-              <option>Coordinación Académica</option>
-              <option>Rectoría</option>
-            </select>
-          </div>
-
-          <div className="form-group full">
-            <label>Motivo *</label>
-            <textarea
-              placeholder="Ej: deseo hablar sobre el progreso académico..."
-              value={newAppointment.reason}
-              onChange={(e) => setNewAppointment({ ...newAppointment, reason: e.target.value })}
-              rows={3}
-              required
-            />
-          </div>
-        </div>
-
-        <button type="submit" className="submit-btn">Enviar Solicitud</button>
-      </form>
-
-      {/* Tabla citas */}
+      {/* Tabla de historial */}
       <div className="appointment-list">
         <h2>📋 Historial de Solicitudes</h2>
         <table>
@@ -120,4 +66,5 @@ export default function ParentAppointments() {
     </div>
   );
 }
+
 

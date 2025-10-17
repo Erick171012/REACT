@@ -14,7 +14,7 @@
    ============================ */
 .teacher-sidebar {
   width: 270px;
-  background: linear-gradient(180deg, #1e3a8a, #2563eb);
+  background: linear-gradient(180deg, #0b1d4a 0%, #102d6a 50%, #17429c 100%);
   color: white;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
   padding: 1.5rem;
 }
 
-/* Marca visible en blanco */
+/* Marca */
 .teacher-sidebar .brand h1 {
   font-size: 1.25rem;
   font-weight: 700;
@@ -32,10 +32,11 @@
 
 .teacher-sidebar .brand p {
   font-size: 0.85rem;
-  color: #e0e7ff;
+  color: #c7d9ff;
   opacity: 0.9;
 }
 
+/* Navegación */
 .teacher-sidebar nav a {
   display: flex;
   align-items: center;
@@ -45,36 +46,40 @@
   border-radius: 10px;
   color: white;
   text-decoration: none;
-  transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out, transform 0.1s ease-in-out;
 }
 
 .teacher-sidebar nav a:hover {
   background: rgba(255, 255, 255, 0.15);
+  transform: translateX(4px);
 }
 
 .teacher-sidebar nav a.active {
   background: white;
-  color: #1e3a8a;
+  color: #0b1d4a;
   font-weight: 600;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
+/* Logout */
 .teacher-sidebar .logout {
   margin-top: 2rem;
 }
 
 .teacher-sidebar .logout button {
   width: 100%;
-  background: #ef4444;
+  background: rgba(255, 255, 255, 0.15);
   color: white;
   border: none;
   padding: 0.75rem;
   border-radius: 10px;
   cursor: pointer;
   font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .teacher-sidebar .logout button:hover {
-  background: #dc2626;
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* ============================
@@ -96,13 +101,14 @@
   align-items: center;
   padding: 1rem 2rem;
   border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .teacher-header .left {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #1e3a8a;
+  color: #0b1d4a;
   font-weight: 600;
 }
 
@@ -113,15 +119,16 @@
 }
 
 .teacher-header .avatar {
-  width: 38px;
-  height: 38px;
-  background: #2563eb;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #102d6a, #17429c);
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  font-weight: 600;
+  box-shadow: 0 0 8px rgba(23, 66, 156, 0.3);
 }
 
 .teacher-header .info p {
@@ -129,10 +136,34 @@
   line-height: 1.1;
 }
 
+.teacher-header .info .name {
+  font-weight: 600;
+  color: #111827;
+}
+
+.teacher-header .info .role {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* ============================
+   CONTENT
+   ============================ */
 .teacher-content {
   padding: 2rem;
   background: #f3f4f6;
   flex: 1;
+  overflow-y: auto;
 }
+
+.teacher-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.teacher-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
 
 

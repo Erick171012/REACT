@@ -1,3 +1,8 @@
+/* ============================
+   CITAS - PADRE DE FAMILIA
+   Colegio Cooperativo Garzón
+   ============================ */
+
 .parent-appointments {
   display: flex;
   flex-direction: column;
@@ -7,85 +12,36 @@
 .page-title {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #1e3a8a;
+  color: #0a2e6d;
   margin-bottom: 0.2rem;
 }
 
 .page-subtitle {
   font-size: 1rem;
-  color: #6b7280;
+  color: #475569;
   margin-bottom: 1.5rem;
 }
 
-/* --- Formulario --- */
-.appointment-form {
-  background: white;
-  border-radius: 1rem;
-  box-shadow: 0 1px 4px rgb(0 0 0 / 0.06);
-  padding: 1.5rem 2rem;
+/* --- Aviso institucional --- */
+.notice-box {
+  background: #eff6ff;
+  border-left: 6px solid #0a2e6d;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.appointment-form h2 {
-  font-size: 1.2rem;
+.notice-box h3 {
+  color: #0a2e6d;
   font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.notice-box p {
   color: #1f2937;
-  margin-bottom: 1rem;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.form-group.full {
-  grid-column: span 2;
-}
-
-.form-group label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #374151;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-  padding: 0.6rem 0.8rem;
-  font-size: 0.9rem;
-  color: #111827;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  border-color: #2563eb;
-  outline: none;
-  box-shadow: 0 0 0 1px #2563eb50;
-}
-
-.submit-btn {
-  margin-top: 1rem;
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.7rem 1.2rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.submit-btn:hover {
-  background-color: #1e40af;
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 /* --- Tabla --- */
@@ -122,6 +78,11 @@ td {
   border-bottom: 1px solid #f3f4f6;
 }
 
+tbody tr:hover {
+  background-color: #f9fafb;
+  transition: background 0.2s ease;
+}
+
 /* --- Estados --- */
 .status-badge {
   display: inline-block;
@@ -144,8 +105,9 @@ td {
   background-color: #dc2626;
 }
 
-tbody tr:hover {
-  background-color: #f9fafb;
-  transition: background 0.2s ease;
+/* --- Formulario deshabilitado (oculto) --- */
+.appointment-form {
+  display: none; /* 🔒 ya no se muestra el formulario */
 }
+
 

@@ -11,23 +11,19 @@ export default function App() {
 
   const handleLogin = async (email, password) => {
     try {
-      // 🔹 Inicia sesión en Firebase
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // 🔹 Obtiene el documento del usuario en Firestore
       const docRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         const data = docSnap.data();
 
-        // Guarda los datos en localStorage
         localStorage.setItem("uid", user.uid);
         localStorage.setItem("role", data.role);
         localStorage.setItem("name", data.name);
 
-        // 🔹 Redirige según el rol
         if (data.role === "student") navigate("/student");
         else if (data.role === "teacher") navigate("/teacher");
         else if (data.role === "parent") navigate("/parent");
@@ -42,7 +38,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 relative overflow-hidden flex items-center justify-center p-4">
+    <div className="min-h-screen relative overflow-hidden flex items-center justify-center p-4"
+      style={{
+        background: "linear-gradient(135deg,   #043073ff 100%)",
+      }}
+    >
       {/* Círculos decorativos */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-20 -left-20 w-80 h-80 bg-white opacity-5 rounded-full"></div>
@@ -55,7 +55,11 @@ export default function App() {
       <div className="relative z-10 w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-600 rounded-full mb-4 shadow-lg">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-4 shadow-lg"
+            style={{
+              background: "linear-gradient(135deg, #102d6a, #17429c)",
+            }}
+          >
             <span className="text-white text-2xl font-bold">CC</span>
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">Colegio Cooperativo</h1>
@@ -109,5 +113,6 @@ export default function App() {
     </div>
   );
 }
+
 
 

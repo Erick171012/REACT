@@ -7,7 +7,7 @@
 .page-title {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #1e3a8a;
+  color: #0a2e6d; /* azul institucional más oscuro */
   margin-bottom: 0.2rem;
 }
 
@@ -30,6 +30,7 @@
   box-shadow: 0 1px 4px rgb(0 0 0 / 0.06);
   padding: 1.5rem 2rem;
   transition: all 0.2s ease;
+  border-left: 6px solid #0a2e6d;
 }
 
 .message-card:hover {
@@ -39,14 +40,7 @@
 
 .message-card.read {
   background: #f9fafb;
-  opacity: 0.85;
-}
-
-.message-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
+  opacity: 0.9;
 }
 
 .message-header h3 {
@@ -62,7 +56,7 @@
 
 .sender {
   font-weight: 600;
-  color: #2563eb;
+  color: #0a2e6d;
 }
 
 .message-content {
@@ -70,34 +64,5 @@
   color: #374151;
   line-height: 1.5;
   margin-top: 0.5rem;
-}
-
-/* --- Botón de marcar como leído --- */
-.mark-btn {
-  border: none;
-  border-radius: 8px;
-  padding: 0.5rem 0.9rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-unread {
-  background-color: #2563eb;
-  color: white;
-}
-
-.btn-unread:hover {
-  background-color: #1e40af;
-}
-
-.btn-read {
-  background-color: #e5e7eb;
-  color: #374151;
-}
-
-.btn-read:hover {
-  background-color: #d1d5db;
 }
 

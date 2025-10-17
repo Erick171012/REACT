@@ -19,6 +19,7 @@ export default function ParentLayout() {
     window.location.href = "/";
   };
 
+  // ✅ Corregido: ruta de Comunicación ahora apunta a /parent/comms
   const menuItems = [
     { name: "Inicio", icon: <Home size={18} />, path: "/parent" },
     { name: "Tareas de mi Hijo", icon: <ClipboardList size={18} />, path: "/parent/tasks" },
@@ -26,16 +27,14 @@ export default function ParentLayout() {
     { name: "Excusas Médicas", icon: <FileText size={18} />, path: "/parent/excuses" },
     { name: "Citaciones", icon: <Users size={18} />, path: "/parent/appointments" },
     { name: "Eventos", icon: <Sparkles size={18} />, path: "/parent/events" },
-    { name: "Comunicación", icon: <MessageSquare size={18} />, path: "/parent/messages" },
+    { name: "Comunicación", icon: <MessageSquare size={18} />, path: "/parent/comms" }, // 👈 cambio clave
   ];
 
-  // Simulación temporal (en el futuro se conecta a Firestore)
   const parent = {
     name: "María González",
     role: "Padre de Familia",
   };
 
-  // Iniciales del avatar
   const getInitials = (name) => {
     if (!name) return "CC";
     const parts = name.trim().split(" ");
@@ -100,5 +99,6 @@ export default function ParentLayout() {
     </div>
   );
 }
+
 
 
