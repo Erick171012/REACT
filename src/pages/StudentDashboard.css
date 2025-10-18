@@ -1,81 +1,97 @@
 /* ============================
-   Panel del Estudiante (Dashboard)
+   PANEL ESTUDIANTE AJUSTADO
    ============================ */
 
-/* Fondo general del panel */
-.student-dashboard {
-  background-color: #f8fafc; /* gris claro */
-  padding: 2rem;
+/* Fondo base gris */
+.student-dashboard-container {
+  background: #f3f4f6;
   min-height: 100vh;
-  font-family: "Inter", sans-serif;
+  padding: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-/* Título principal */
-.student-dashboard .title {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #1e3a8a; /* azul institucional */
-  margin-bottom: 1.5rem;
+/* Tarjeta central con sombra */
+.student-dashboard-card {
+  width: 100%;
+  max-width: 1150px;
+  background: white;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 24px rgba(11, 29, 74, 0.08);
+  padding: 2.5rem 3rem;
+  animation: fadeIn 0.4s ease-in-out;
 }
 
-/* ============================
-   Tarjetas superiores
-   ============================ */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.2rem;
+/* Encabezado */
+.dashboard-header {
   margin-bottom: 2rem;
 }
 
+.dashboard-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #0b1d4a;
+  margin-bottom: 0.3rem;
+}
+
+.dashboard-subtitle {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+/* Tarjetas superiores */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
 .stat-card {
-  background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  border-radius: 1.2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.2rem 1.4rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 1.5rem 1.6rem;
+  transition: all 0.2s ease;
 }
 
 .stat-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-.stat-card .icon {
-  background: #eef2ff;
-  padding: 0.7rem;
-  border-radius: 0.8rem;
-  font-size: 1.4rem;
+/* Iconos */
+.icon {
+  padding: 0.8rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
 }
 
-/* Colores personalizados para íconos */
 .icon.purple {
   color: #7e22ce;
   background: #f3e8ff;
 }
-
 .icon.blue {
   color: #2563eb;
   background: #dbeafe;
 }
-
 .icon.green {
   color: #16a34a;
   background: #dcfce7;
 }
-
 .icon.pink {
   color: #db2777;
   background: #fce7f3;
 }
 
-/* Texto de información */
 .stat-card .info h3 {
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #111827;
   margin: 0;
 }
 
@@ -85,44 +101,42 @@
   margin: 0;
 }
 
-/* ============================
-   Actividades recientes
-   ============================ */
+/* Actividades recientes */
 .activities {
-  background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 1.2rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
 }
 
-.activities h3 {
-  font-size: 1.2rem;
+.section-title {
+  font-size: 1.3rem;
   font-weight: 600;
-  color: #1e3a8a;
-  margin-bottom: 1rem;
+  color: #0b1d4a;
+  margin-bottom: 1.2rem;
 }
 
 .activity-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f9fafb;
-  border-radius: 0.8rem;
-  padding: 1rem 1.2rem;
-  margin-bottom: 0.8rem;
-  border-left: 4px solid #2563eb;
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 5px solid #2563eb;
   transition: background 0.2s ease;
 }
 
 .activity-card:hover {
-  background: #f1f5f9;
+  background: #eef2ff;
 }
 
 .activity-info h4 {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: #1e293b;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
 }
 
 .activity-info p {
@@ -132,34 +146,54 @@
 }
 
 .activity-info .time {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: #9ca3af;
 }
 
-/* Etiquetas de materias */
 .tag {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #fff;
-  padding: 0.4rem 0.8rem;
+  color: #ffffff;
+  padding: 0.45rem 0.9rem;
   border-radius: 0.6rem;
-  text-transform: capitalize;
 }
 
 .tag.blue {
   background-color: #2563eb;
 }
-
 .tag.green {
   background-color: #16a34a;
 }
-
 .tag.pink {
   background-color: #db2777;
 }
 
-/* Responsividad */
-@media (max-width: 640px) {
+/* Animación */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .student-dashboard-container {
+    padding: 1.5rem;
+  }
+
+  .student-dashboard-card {
+    padding: 1.5rem;
+  }
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
@@ -167,11 +201,7 @@
   .activity-card {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .tag {
-    align-self: flex-end;
   }
 }
+
 

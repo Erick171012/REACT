@@ -9,7 +9,6 @@
   background-color: #f9fafb;
   font-family: "Inter", sans-serif;
   color: #1f2937;
-  overflow: hidden;
 }
 
 /* ============================
@@ -22,25 +21,37 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 1.5rem 1.2rem;
+  padding: 1.8rem 1.4rem;
   box-shadow: 4px 0 12px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 10;
 }
 
+/* Logo institucional */
 .parent-sidebar .brand {
-  text-align: left;
+  text-align: center;
   margin-bottom: 1.5rem;
 }
 
+.parent-sidebar .brand-logo {
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 2px 3px rgba(255, 255, 255, 0.2));
+}
+
 .parent-sidebar .brand h1 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 0.25rem;
   color: #ffffff;
+  margin-bottom: 0.3rem;
 }
 
 .parent-sidebar .brand p {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #c7d9ff;
+  opacity: 0.9;
 }
 
 /* ============================
@@ -49,24 +60,26 @@
 .parent-sidebar nav {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  margin-top: 0.5rem;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  flex-grow: 1; /* 🔹 permite que el botón baje con el flujo */
 }
 
 .parent-sidebar nav a {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
   color: white;
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 .parent-sidebar nav a:hover {
   background: rgba(255, 255, 255, 0.15);
+  transform: translateX(4px);
 }
 
 .parent-sidebar nav a.active {
@@ -77,14 +90,15 @@
 }
 
 /* ============================
-   LOGOUT BUTTON
+   BOTÓN DE CERRAR SESIÓN (ABAJO DEL TODO)
    ============================ */
-.parent-sidebar .logout {
-  margin-top: auto;
-  padding-top: 2rem;
+.logout {
+  margin-top: auto; /* 🔹 baja el botón al final del sidebar */
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.parent-sidebar .logout button {
+.logout button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,20 +106,21 @@
   width: 100%;
   background: rgba(255, 255, 255, 0.15);
   border: none;
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1rem;
   border-radius: 10px;
   color: #fff;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
-.parent-sidebar .logout button:hover {
-  background: rgba(255, 255, 255, 0.25);
+.logout button:hover {
+  background: #e11d48; /* rojo institucional suave */
+  transform: scale(1.02);
 }
 
 /* ============================
-   MAIN AREA
+   MAIN
    ============================ */
 .parent-main {
   flex: 1;
@@ -175,7 +190,7 @@
 }
 
 /* ============================
-   CONTENT
+   CONTENIDO PRINCIPAL
    ============================ */
 .parent-content {
   padding: 2rem;
@@ -183,8 +198,10 @@
   background: #f3f4f6;
   overflow-y: auto;
   height: calc(100vh - 80px);
+  animation: fadeIn 0.3s ease-in-out;
 }
 
+/* Scrollbar */
 .parent-content::-webkit-scrollbar {
   width: 8px;
 }
@@ -193,6 +210,21 @@
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 8px;
 }
+
+/* Animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
 
 
 

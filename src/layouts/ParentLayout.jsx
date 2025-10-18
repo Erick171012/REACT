@@ -1,4 +1,4 @@
-import React from "react";
+import "./ParentLayout.css";
 import { NavLink, Outlet } from "react-router-dom";
 import {
   Home,
@@ -11,15 +11,15 @@ import {
   LogOut,
   Bell,
 } from "lucide-react";
-import "./ParentLayout.css";
+import coopeLogo from "../assets/coope.png"; // 🟦 Logo institucional
+import React from "react";
 
 export default function ParentLayout() {
   const handleLogout = () => {
     localStorage.clear();
-    window.location.href = "/";
+    window.location.href = "/login";
   };
 
-  // ✅ Corregido: ruta de Comunicación ahora apunta a /parent/comms
   const menuItems = [
     { name: "Inicio", icon: <Home size={18} />, path: "/parent" },
     { name: "Tareas de mi Hijo", icon: <ClipboardList size={18} />, path: "/parent/tasks" },
@@ -27,7 +27,7 @@ export default function ParentLayout() {
     { name: "Excusas Médicas", icon: <FileText size={18} />, path: "/parent/excuses" },
     { name: "Citaciones", icon: <Users size={18} />, path: "/parent/appointments" },
     { name: "Eventos", icon: <Sparkles size={18} />, path: "/parent/events" },
-    { name: "Comunicación", icon: <MessageSquare size={18} />, path: "/parent/comms" }, // 👈 cambio clave
+    { name: "Comunicación", icon: <MessageSquare size={18} />, path: "/parent/comms" },
   ];
 
   const parent = {
@@ -47,13 +47,19 @@ export default function ParentLayout() {
     <div className="parent-layout">
       {/* Sidebar lateral */}
       <aside className="parent-sidebar">
+        {/* 🔹 Logo y encabezado institucional */}
         <div className="brand">
+          <img
+            src={coopeLogo}
+            alt="Escudo Colegio Cooperativo"
+            className="brand-logo"
+          />
           <h1>Colegio Cooperativo</h1>
           <p>Agenda Estudiantil Digital</p>
         </div>
 
-        {/* Navegación */}
-        <nav>
+        {/* 🔹 Navegación */}
+        <nav className="parent-menu">
           {menuItems.map((item) => (
             <NavLink
               key={item.name}
@@ -66,7 +72,7 @@ export default function ParentLayout() {
           ))}
         </nav>
 
-        {/* Cerrar sesión */}
+        {/* 🔹 Cerrar sesión */}
         <div className="logout">
           <button onClick={handleLogout}>
             <LogOut size={18} /> Cerrar Sesión
@@ -74,7 +80,7 @@ export default function ParentLayout() {
         </div>
       </aside>
 
-      {/* Área principal */}
+      {/* Contenido principal */}
       <main className="parent-main">
         <header className="parent-header">
           <div className="left">
@@ -91,7 +97,6 @@ export default function ParentLayout() {
           </div>
         </header>
 
-        {/* Contenido dinámico */}
         <div className="parent-content">
           <Outlet />
         </div>
@@ -99,6 +104,7 @@ export default function ParentLayout() {
     </div>
   );
 }
+
 
 
 

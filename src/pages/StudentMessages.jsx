@@ -1,39 +1,61 @@
 import React from "react";
 import { MessageSquare } from "lucide-react";
-import "./StudentMessages.css"; // si le estás haciendo su CSS aparte
+import "./StudentMessages.css";
 
-// Componente de tarjeta simple (temporal)
-const Card = ({ children }) => (
-  <div className="bg-white shadow-md rounded-xl p-4 border border-gray-200">
-    {children}
+// Tarjeta moderna con efecto hover
+const MessageCard = ({ title, message, time }) => (
+  <div className="message-card">
+    <h2>{title}</h2>
+    <p>{message}</p>
+    <span>{time}</span>
   </div>
 );
 
 export default function StudentMessages() {
+  const messages = [
+    {
+      title: "Mensaje del Profesor de Matemáticas",
+      message:
+        "Recuerda que mañana hay evaluación del segundo periodo. Repasa los temas de álgebra.",
+      time: "Hace 2 horas",
+    },
+    {
+      title: "Mensaje del Coordinador",
+      message:
+        "El día viernes habrá jornada cultural. Asistencia obligatoria.",
+      time: "Hace 1 día",
+    },
+    {
+      title: "Aviso de Rectoría",
+      message:
+        "Se invita a los estudiantes a participar en la jornada ecológica del próximo lunes.",
+      time: "Hace 3 días",
+    },
+  ];
+
   return (
-    <div className="p-6 space-y-4">
-      <h1 className="text-2xl font-semibold flex items-center gap-2">
-        <MessageSquare className="w-6 h-6 text-blue-600" />
-        Mensajes
-      </h1>
+    <div className="student-messages-page">
+      <header className="messages-header">
+        <MessageSquare className="icon" />
+        <h1>Mensajes</h1>
+      </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card>
-          <h2 className="font-medium text-lg">Mensaje del Profesor de Matemáticas</h2>
-          <p className="text-sm text-gray-600 mt-1">
-            Recuerda que mañana hay evaluación del segundo periodo. Repasa los temas de álgebra.
-          </p>
-          <p className="text-xs text-gray-400 mt-2 text-right">Hace 2 horas</p>
-        </Card>
+      <p className="subtitle">
+        Consulta los avisos y comunicados enviados por tus profesores y
+        coordinadores académicos.
+      </p>
 
-        <Card>
-          <h2 className="font-medium text-lg">Mensaje del Coordinador</h2>
-          <p className="text-sm text-gray-600 mt-1">
-            El día viernes habrá jornada cultural. Asistencia obligatoria.
-          </p>
-          <p className="text-xs text-gray-400 mt-2 text-right">Hace 1 día</p>
-        </Card>
+      <div className="messages-grid">
+        {messages.map((msg, index) => (
+          <MessageCard
+            key={index}
+            title={msg.title}
+            message={msg.message}
+            time={msg.time}
+          />
+        ))}
       </div>
     </div>
   );
 }
+

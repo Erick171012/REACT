@@ -13,6 +13,7 @@ import {
   LogOut,
 } from "lucide-react";
 import React from "react";
+import coopeLogo from "../assets/coope.png"; // 🟦 Logo institucional
 
 export default function TeacherLayout() {
   const handleLogout = () => {
@@ -31,13 +32,11 @@ export default function TeacherLayout() {
     { name: "Comunicación", icon: <MessageSquare size={18} />, path: "/teacher/comms" },
   ];
 
-  // Simulación temporal (cuando conectemos Firestore esto será dinámico)
   const teacher = {
     name: "Prof. Ana Gómez",
     role: "Profesor",
   };
 
-  // Iniciales del avatar
   const getInitials = (name) => {
     if (!name) return "CC";
     const parts = name.trim().split(" ");
@@ -51,6 +50,7 @@ export default function TeacherLayout() {
       {/* Sidebar */}
       <aside className="teacher-sidebar">
         <div className="brand">
+          <img src={coopeLogo} alt="Logo Colegio Cooperativo" className="brand-logo" />
           <h1>Colegio Cooperativo</h1>
           <p>Agenda Estudiantil Digital</p>
         </div>
@@ -75,7 +75,7 @@ export default function TeacherLayout() {
         </div>
       </aside>
 
-      {/* Área principal */}
+      {/* Main */}
       <main className="teacher-main">
         <header className="teacher-header">
           <div className="left">
@@ -99,4 +99,5 @@ export default function TeacherLayout() {
     </div>
   );
 }
+
 

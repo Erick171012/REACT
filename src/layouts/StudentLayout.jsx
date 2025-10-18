@@ -11,7 +11,8 @@ import {
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../firebase"; // Asegúrate que la ruta es correcta según tu estructura
+import { db } from "../firebase";
+import coopeLogo from "../assets/coope.png"; // 🟦 Escudo del colegio
 
 export default function StudentLayout() {
   const [student, setStudent] = useState(null);
@@ -48,7 +49,6 @@ export default function StudentLayout() {
     { name: "Mensajes", icon: <MessageSquare size={18} />, path: "/student/messages" },
   ];
 
-  // Obtener iniciales para el avatar
   const getInitials = (name) => {
     if (!name) return "CC";
     const parts = name.trim().split(" ");
@@ -60,12 +60,19 @@ export default function StudentLayout() {
     <div className="student-layout">
       {/* Sidebar */}
       <aside className="student-sidebar">
+        {/* 🔹 Encabezado con logo e info institucional */}
         <div className="brand">
+          <img
+            src={coopeLogo}
+            alt="Escudo Colegio Cooperativo"
+            className="brand-logo"
+          />
           <h1>Colegio Cooperativo</h1>
           <p>Agenda Estudiantil Digital</p>
         </div>
 
-        <nav>
+        {/* 🔹 Navegación principal */}
+        <nav className="student-menu">
           {menuItems.map((item) => (
             <NavLink
               key={item.name}
@@ -78,6 +85,7 @@ export default function StudentLayout() {
           ))}
         </nav>
 
+        {/* 🔹 Botón de cierre de sesión */}
         <div className="logout">
           <button onClick={handleLogout}>
             <LogOut size={18} /> Cerrar Sesión
@@ -94,12 +102,10 @@ export default function StudentLayout() {
           </div>
 
           <div className="profile">
-            <div className="avatar">
-              {getInitials(student?.name)}
-            </div>
+            <div className="avatar">{getInitials(student?.name)}</div>
             <div className="info">
               <p className="name">{student ? student.name : "Cargando..."}</p>
-              <p className="role">{student ? student.role : "Estudiante"}</p>
+              <p className="role">Estudiante</p>
             </div>
           </div>
         </header>
@@ -111,5 +117,6 @@ export default function StudentLayout() {
     </div>
   );
 }
+
 
 

@@ -1,88 +1,110 @@
-.teacher-appointments {
+/* ============================
+   CITACIONES - PROFESOR
+   ============================ */
+
+.appointments-container {
+  background: white;
   padding: 2rem;
-  color: #1f2937;
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(11, 29, 74, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.teacher-appointments .title {
-  font-size: 1.8rem;
+.appointments-container h2 {
+  color: #0b1d4a;
   font-weight: 700;
-  color: #1e3a8a;
+  margin-bottom: 0.5rem;
 }
 
-.teacher-appointments .subtitle {
+.appointments-container .subtitle {
   color: #6b7280;
-  margin-top: 4px;
+  font-size: 0.95rem;
   margin-bottom: 1.5rem;
 }
 
 .appointment-form {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.form-group {
-  margin-bottom: 1.2rem;
   display: flex;
   flex-direction: column;
-}
-
-.form-group label {
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 0.4rem;
-}
-
-.form-group select,
-.form-group textarea,
-.form-group input {
-  padding: 0.6rem 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-  background-color: #f9fafb;
-  outline: none;
-  font-size: 0.95rem;
-}
-
-.form-group textarea {
-  resize: none;
-}
-
-.radio-group {
-  display: flex;
-  gap: 2rem;
-  margin-top: 0.3rem;
-}
-
-.radio-group label {
-  font-weight: 500;
-  color: #4b5563;
-}
-
-.form-row {
-  display: flex;
   gap: 1rem;
 }
 
-.form-group.half {
-  flex: 1;
+.appointment-form label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.appointment-form select,
+.appointment-form input,
+.appointment-form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+}
+
+.appointment-form select:focus,
+.appointment-form input:focus,
+.appointment-form textarea:focus {
+  outline: none;
+  border-color: #17429c;
+  box-shadow: 0 0 0 3px rgba(23, 66, 156, 0.15);
 }
 
 .send-btn {
-  background-color: #1e40af;
+  background: #0b1d4a;
   color: white;
+  padding: 0.9rem;
   border: none;
   border-radius: 0.75rem;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 1rem;
-  transition: background-color 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
 }
 
 .send-btn:hover {
-  background-color: #1e3a8a;
+  background: #17429c;
+  transform: translateY(-2px);
 }
+
+.success-message {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Inputs anidados extra (grado y nombres) */
+.appointment-form input[type="text"],
+.appointment-form select {
+  background-color: #f9fafb;
+}
+
+.appointment-form input[type="text"]:focus {
+  background-color: #fff;
+  border-color: #17429c;
+  box-shadow: 0 0 0 3px rgba(23, 66, 156, 0.15);
+}
+
+/* Mejor alineación visual */
+.appointment-form label {
+  margin-top: 0.5rem;
+}
+
